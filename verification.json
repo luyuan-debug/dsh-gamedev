@@ -333,5 +333,11 @@
     "Source-only reports without recorded candidate metadata are explicitly marked NOT_RECORDED, not silently bound to this tarball.",
     "Test PASS does not imply native lifecycle, engine, GUI, model, audio or export acceptance outside that report scope.",
     "Heuristic public scanning plus file-manifest review does not prove arbitrary text contains no private data."
-  ]
+  ],
+  "sourceSnapshot": {
+    "ref": "v0.2.0",
+    "commit": "2d05e42336f9ab8ab951d1cb27140b8aa357091d",
+    "url": "https://github.com/luyuan-debug/dsh-gamedev/tree/v0.2.0",
+    "note": "Release verification snapshot. Documentation on main may advance independently; verify release files against this tag."
+  }
 }
