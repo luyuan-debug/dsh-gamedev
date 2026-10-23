@@ -34,7 +34,7 @@ export class Controller {
   readonly slot: Slot;
   active = true;
   runtime?: Runtime;
-  state: any = { status: 'WAITING_FOR_SESSION', reason: 'Select Godot 2D in a session bound to the configured project.', ownerSession: '', appliedGeneration: '' };
+  state: any = { status: 'WAITING_FOR_SESSION', reason: 'Select Godot 2D in a session using the configured project folder.', ownerSession: '', appliedGeneration: '' };
   private cache = ''; private checkedAt = 0; private optional: any = {}; private lastConfig = ''; private retirement?: Promise<void>;
   constructor(readonly ctx: any, readonly config: any) {
     this.slot = slotFor(ctx.root);
@@ -81,7 +81,7 @@ function row(id: string, suffix: string, config?: any) { return { id, name: `@de
 export function presetDefinition(instance: string) {
   const prefix = readFileSync(new URL('../prompts/godot-2d.md', import.meta.url), 'utf8');
   const skills = fileURLToPath(new URL('../skills', import.meta.url));
-  return { id: PRESET_ID, name: 'Godot 2D', description: 'Godot 4.7.2 · design, implementation, debugging and verification in one Agent.', order: 20, plugins: [
+  return { id: PRESET_ID, name: 'Godot 2D', description: '编写游戏脚本、修改场景、运行与调试 · Godot 4.7.2', order: 20, plugins: [
     row('persona', 'persona', { prefix }), row('agent-instructions', 'agent-instructions', { maxBytes: 65536 }),
     row('time-context', 'time-context'), row('tool-shell', process.platform === 'win32' ? 'tool-pwsh' : 'tool-bash'),
     row('tool-fs', 'tool-fs'), row('tool-fs-search', 'tool-fs-search', { sampleOverCapGlobResults: false }), row('tool-jobs', 'tool-jobs'),

@@ -201,7 +201,7 @@ def main() -> None:
     table = "\n".join(f"| {item['name']} | {item['version']} | {item['license']} |" for item in distributions)
     notices = f'''# Third party notices
 
-The npm package contains the dsh-gamedev implementation, a small guarded launcher, and schema inventory derived from Godot Editor MCP. Godot Editor MCP, its Godot addon, all Python dependencies, DSH native runtime peers, Godot Engine, and optional command-line programs are installed separately; their executables and Python packages are not embedded in the npm package. Model accounts and test-only credential overlays are excluded.
+The package includes dsh-gamedev, its local setup helper, editor connection checks, and a tool schema inventory derived from Godot Editor MCP. DSH, Godot, the Godot Editor MCP server and addon, Python dependencies, and optional command-line tools are installed separately and retain their own licenses. No model account, third-party font, or game asset is bundled.
 
 ## Godot Editor MCP and addon notice
 
@@ -219,9 +219,13 @@ DeepSeek Harness runtime peers use MIT: https://github.com/deepseek-ai/deepseek-
 
 ImageMagick 7.1.2-25 uses the ImageMagick license. The existing FFmpeg 8.1.1 build enables GPL components. These optional external programs are not redistributed, and their absence does not block unrelated core features. No third-party fonts or game assets are bundled.
 
+### Godot installation
+
+The setup helper copies a user-selected Godot application into the development directory. It does not download, re-sign, or modify the original engine. Engine test and signing details are documented in [VERIFICATION.md](docs/VERIFICATION.md).
+
 ## Python distributions in the isolated macOS arm64 environment
 
-All {len(distributions)} exact installed versions are matched to `locks/bridge-requirements.lock`. `resolved-dependencies.json` records each selected distribution URL, SHA-256, official metadata URL, concrete license, installed license-file hashes, wheel tags, and macOS arm64 validation limits. Compatible published wheel hashes are intersected with the lock; where no compatible wheel is published, a locked source archive is identified explicitly. Installed/compatible does not claim that every dependency was individually business-tested. The inventory fetches metadata, not replacement packages.
+The following {len(distributions)} versions are recorded in `locks/bridge-requirements.lock`. `resolved-dependencies.json` includes the selected wheel URLs, SHA-256 values, metadata sources and license-file hashes. The installer checks the selected files against those values before installation. Compatibility was checked for macOS arm64 with CPython 3.14; this is not a claim that every library feature was tested. The project MIT license does not change these dependencies' licenses.
 
 | Distribution | Exact version | License |
 | --- | --- | --- |

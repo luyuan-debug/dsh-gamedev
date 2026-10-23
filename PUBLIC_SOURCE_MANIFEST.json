@@ -327,6 +327,6 @@
     "ref": "v0.2.0",
     "commit": "2d05e42336f9ab8ab951d1cb27140b8aa357091d",
     "url": "https://github.com/luyuan-debug/dsh-gamedev/tree/v0.2.0",
-    "note": "Release verification snapshot. Documentation on main may advance independently; verify release files against this tag."
+    "note": "此记录对应 v0.2.0 标签。main 中的说明与文案可能继续更新；核对发行文件时请使用该标签及发行附件。"
   }
 }

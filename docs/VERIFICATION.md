@@ -1,39 +1,52 @@
-# dsh-gamedev 0.2.0 验收方法与发行状态
+# 测试结果与支持范围
 
-本文件规定 0.2.0 的验收方法与支持边界。确切发行包 SHA-256、实际安装字节、原生进程、Godot 与模型结果由 [v0.2.0 发行附件](https://github.com/luyuan-debug/dsh-gamedev/releases/tag/v0.2.0) 中的独立验收摘要及本地完整证据记录；文档或版本号本身不能代替这些证据。0.1.0 的通过项不自动作为新生命周期和安装代码的通过项。
+本页说明 **v0.2.0 已经测过什么，以及哪些功能尚未完成验证**。安装包、源码和测试摘要均在 [v0.2.0 发布页](https://github.com/luyuan-debug/dsh-gamedev/releases/tag/v0.2.0)。
 
-## 源码回归基线
+## 已验证环境
 
-本版 macOS 源码基线已运行 112 项 Node 检查（含 16 项生命周期并发、48 项安装 fixture）、25 项固定桥接与保护适配器检查、10 项发布扫描回归，均通过；只读源码合同检查通过。最终发行还需对确切 tarball 分别完成以下真实验收。安装 fixture 的端口测试需要 loopback 权限；沙箱拒绝 listen 与产品断言失败分开记录。
+| 组件 | 版本 |
+| --- | --- |
+| 系统 | macOS arm64 |
+| DSH | 0.2.1-rc.2 |
+| Godot | 4.7.2 stable，测试使用 .NET 版 |
+| Godot Editor MCP 与编辑器插件 | 2026.10.20.1 |
+| Python | CPython 3.14 |
+| Node.js | 24.21.0 用于 DSH 运行 |
+| .NET SDK | 10.0.302 |
 
-这些是源码级结果，不单独证明真实 DSH 挂载/释放、安装闭环、模型开发或画面正确。完整环境与逐项结论以发行附件为准。
+依赖的下载地址、版本、校验值与许可记录在 [依赖清单](../resolved-dependencies.json)中。
 
-## 必须分别记录的证据
+## v0.2.0 测试记录
 
-| 层次 | 核验内容 | 不可推定的结论 |
-| --- | --- | --- |
-| 静态与纯检查 | 包内容、唯一预设/Skill、配置、UI、输入、许可、锁、生产指纹及发布隐私扫描 | 不证明 native scope、MCP 或游戏行为 |
-| 隔离安装闭环 | 同一 tarball 的 prepare、doctor、launch、stop、relaunch、uninstall；实际安装逐文件比较；编辑器实际路径 | doctor GO 不等于编辑器/模型可用 |
-| 原生生命周期 | 精确拥有者、定义代次、禁用与清理、启动期撤销、会话交替、目标变更、热重载、有限重连与不重放 | 合成 lease 测试不代替原生进程和端口证据 |
-| 真实 Godot | 固定桥接/addon、错项目拒绝、第二 peer、读写保存重开、解析错误、运行日志、输入释放、GUI 与导出 | headless 退出 0 不等于零解析错误或实际画面正确 |
-| 授权模型开发 | 本版实际模型链创建/修改/修复小样，保留失败基线与回归；图片确实到达视觉模型 | 手动调用工具或仅提供图片路径不等于 Agent 完成开发或看图 |
+| 检查内容 | 已记录结果 |
+| --- | --- |
+| 源码自动化测试 | 112 项 Node 测试、25 项桥接测试、10 项发布扫描测试通过 |
+| 源码、安装包和 DSH 注册检查 | 59 项通过 |
+| 连接关闭与恢复 | 13 个真实应用场景通过，包含 20 轮停用与启用 |
+| 安装与卸载 | 完成安装、检查、启动、关闭、再次启动和卸载，检查工程与其他设置保留情况 |
+| 模型修改游戏 | 在一个测试用 GDScript 工程中完成一次功能修改；游戏检查 47 项通过，另有 10 项独立检查，完整重启 DSH 后再检查 10 项 |
+| C# 编译与引擎运行 | 单独完成 10 项检查；不代表完整 C# 对话开发流程已验证 |
 
-原始执行包的 49 项 ID 与 38 项核心项保持不变，见 `acceptance/cases.json`、[TRACEABILITY.md](TRACEABILITY.md)。模板 `acceptance/acceptance-results.template.json` 保持未运行初态。实际结果使用 `PASS`、`FAIL`、`BLOCKED`、`NOT_RUN` 或有理由的 `NOT_APPLICABLE`；不得以缺少证据代替通过。
+机器可读的详细结果在发行附件 `verification.json` 中。`acceptance/cases.json` 是完整测试计划，空白结果模板用于以后重新测试，不能当成当前版本的通过记录。
 
-生产输入指纹位于 `dist/build-info.json`。tarball SHA-256 覆盖包全部字节；源码树摘要标识公开源码；安装审查比较 tarball 与隔离 Profile 的真实文件。这些摘要用途不同，版本号相同不能互相替代。可安装包中不包含整套私有验收日志。
+## 尚未完成的验证
 
-## 发行支持边界
+- Windows、Linux 的 DSH 与 Godot 实际使用流程。Linux 上的源码 CI 只检查源码。
+- 完整 C# 对话开发流程与 C++ 项目开发。
+- 本版从零创建完整游戏、模型识别运行画面、音频试听和游戏导出的完整流程。一次增量修改不代表这些流程也已通过。
+- 与 Projects、Agent Team、Gua、DCC 等的完整组合使用。
+- HTTP 连接模式。当前仅支持本地连接程序。
 
-目标组合为 DSH `0.2.1-rc.2`、Godot `4.7.2 stable`、bridge/addon `2026.10.20.1`、macOS arm64、CPython 3.14。依赖精确来源、artifact 摘要和许可见 `resolved-dependencies.json`、`locks/`、`THIRD_PARTY_NOTICES.md`。如使用任务副本的本地签名处理，应记录单独 provenance；不能推定原始引擎发行包的签名或 notarization。
+图片文件存在不代表模型实际看过图片；命令成功退出也不代表画面或音频效果符合要求。相关结果需要分别检查并记录。
 
-stdio 受支持；HTTP 因当前 native SDK 无法约束每次重定向到 loopback 而拒绝启用。只有显式允许且实际探测 `READY` 的可选 CLI 才进入能力提示。可选项缺失不阻断无关核心实现。
+## 引擎副本与数据位置
 
-C#、C++、GUT/gdUnit4、Projects 深层业务、Gua、DCC、Pixelorama、Linux 第二平台、TUI、音频试听等按实际条件和证据逐项报告；Mac GDScript 结果不能替代。纯 Linux CI 不发送模型请求，也不声明原生 DSH/Godot 支持。
+真实游戏测试使用单独的 Godot 副本。测试副本的主程序做过本地签名处理，原安装程序未修改；这不表示整份应用获得厂商签名或公证。具体记录保留在依赖清单的 `godotTaskCopySigning` 字段，安装程序不会自动重签引擎。
 
-macOS runtime `user://` 仍在 Application Support 的唯一新建命名空间。编辑器 `_sc_` 不能把它迁回 workspace；确切名称在隔离工作区 ownership 与本地交付报告中，卸载不删存档。
+编辑器设置保存在开发目录中。游戏存档仍可能位于 macOS Application Support 下，每个新建工程使用独立名称；具体路径记录在开发目录中，卸载不会删除存档。
 
-## 开源发布与私有证据
+## 如何复查
 
-公开源码使用新的正向文件清单导出并扫描。仅包含可复现源码、合成测试、文档、锁和经过审阅的汇总；不包含账户、令牌、鉴权 URL、个人路径、会话轨迹、原工程、引擎副本、wheel 或旧版完整交付包。私有完整证据仅留在授权本地交付。
+源码构建和测试命令见 [构建说明](INSTALL.md#从源码进行锁定构建)。运行应用测试时，请记录实际使用的安装包及 SHA-256；修改源码后重新打包，需要重做受影响的检查。
 
-GitHub Actions 运行源码检查及静态合同，不使用模型账户或秘密。CI 的实际状态以该 commit 的运行结果为准；工作流存在本身不等于已通过。发布前仍需对最终公开树运行 `scripts/scan_publication.py` 并审阅完整 manifest，启发式扫描不能保证任意文本没有私有信息。
+发行附件中的源码清单与结果对应 [v0.2.0 标签](https://github.com/luyuan-debug/dsh-gamedev/tree/v0.2.0)。`main` 中的文档或文案更新不修改该发行包。GitHub Actions 的运行结果以对应提交为准，不包含模型调用和真实编辑器操作。

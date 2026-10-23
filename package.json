@@ -1,7 +1,7 @@
 {
   "name": "dsh-gamedev",
   "version": "0.2.0",
-  "description": "One native Godot 2D preset for design, development and verification.",
+  "description": "Develop Godot 2D games in DSH: edit scripts and scenes, run and debug.",
   "type": "module",
   "license": "MIT",
   "engines": {

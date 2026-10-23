@@ -4,7 +4,7 @@
   "entries": [
     {
       "id": "dsh-native",
-      "name": "DSH 原生工程工具/预设/MCP",
+      "name": "DSH 工程工具",
       "kind": "host",
       "tier": "core",
       "sources": [
@@ -14,9 +14,9 @@
         "S26"
       ],
       "defaultEnabled": false,
-      "selectionReason": "已有能力不重造",
-      "integration": "保留当前受支持原生文件、终端、搜索、Skill、模型能力；不改变用户默认 preset。",
-      "licenseNote": "按选定版本 LICENSE/NOTICE 再核查",
+      "selectionReason": "读取与修改文件、搜索和运行命令",
+      "integration": "使用 DSH 已有的文件、搜索、终端、工作流和模型能力，不改变默认开发模式。",
+      "licenseNote": "使用时查看所选版本的 LICENSE/NOTICE",
       "runtimeStatus": "NOT_RUN"
     },
     {
@@ -31,8 +31,8 @@
         "S08"
       ],
       "defaultEnabled": false,
-      "selectionReason": "完整编辑器闭环与上游 Toolset",
-      "integration": "固定服务端和 addon；原生 MCP 挂载；实际检验目录更新/图像/输入/保存。",
+      "selectionReason": "连接 Godot 编辑器以读取场景、修改、保存和调试",
+      "integration": "服务端与编辑器插件固定同版，通过 DSH 连接。当前结果见 docs/VERIFICATION.md。",
       "licenseNote": "MIT；不随包复制上游实现",
       "runtimeStatus": "NOT_RUN",
       "candidateVersion": "2026.10.20.1",
@@ -48,9 +48,9 @@
         "S09"
       ],
       "defaultEnabled": false,
-      "selectionReason": "构建/导出/Headless 的官方路径",
-      "integration": "检测实际 4.7.2 help；使用已有绝对路径和有限墙钟 timeout。",
-      "licenseNote": "按选定版本 LICENSE/NOTICE 再核查",
+      "selectionReason": "使用 Godot 自带的运行、导入与导出命令",
+      "integration": "使用已配置的 Godot 路径，按该版本帮助说明执行，并设置运行超时。",
+      "licenseNote": "使用时查看所选版本的 LICENSE/NOTICE",
       "runtimeStatus": "NOT_RUN",
       "candidateVersion": "4.7.2"
     },
@@ -63,8 +63,8 @@
         "S12"
       ],
       "defaultEnabled": false,
-      "selectionReason": "轻量静态检查",
-      "integration": "必须实现允许开关和版本探测；先 check，格式化另审 diff。",
+      "selectionReason": "GDScript 静态检查与格式化",
+      "integration": "设置页允许使用且检查可用后提供使用指引；格式化前后核对文件差异。",
       "licenseNote": "MIT",
       "runtimeStatus": "NOT_RUN"
     },
@@ -77,9 +77,9 @@
         "S14"
       ],
       "defaultEnabled": false,
-      "selectionReason": "通用 2D 图像批处理",
-      "integration": "必须实现允许开关和探测；小样转码/尺寸/alpha 验证。",
-      "licenseNote": "ImageMagick License；按分发/构建核查，不统一写 MIT",
+      "selectionReason": "批量处理 2D 图片",
+      "integration": "设置页允许使用且检查可用后，可处理尺寸、格式和透明通道。",
+      "licenseNote": "ImageMagick License；按分发/构建核查，保留原许可",
       "runtimeStatus": "NOT_RUN"
     },
     {
@@ -91,9 +91,9 @@
         "S15"
       ],
       "defaultEnabled": false,
-      "selectionReason": "音频视频处理与元数据",
-      "integration": "必须实现允许开关和探测；小样 inspect/convert，不要求生成音乐。",
-      "licenseNote": "通常 LGPL，可启用 GPL/nonfree 组件；不随包打二进制",
+      "selectionReason": "查看和转换音视频",
+      "integration": "设置页允许使用且检查可用后，可读取媒体信息或转换文件。",
+      "licenseNote": "通常 LGPL，可启用 GPL/nonfree 组件；不随插件分发二进制",
       "runtimeStatus": "NOT_RUN"
     },
     {
@@ -105,8 +105,8 @@
         "S13"
       ],
       "defaultEnabled": false,
-      "selectionReason": "真正开源的像素资产工具",
-      "integration": "检测已安装程序；CLI export 以版本 help 为准，不做 GUI 自动绘画系统。",
+      "selectionReason": "像素画与动画资源编辑",
+      "integration": "作为已有项目的参考工具；命令行导出范围以安装版本的帮助为准，不提供自动绘画功能。",
       "licenseNote": "MIT；素材另核查",
       "runtimeStatus": "NOT_RUN"
     },
@@ -119,8 +119,8 @@
         "S11"
       ],
       "defaultEnabled": false,
-      "selectionReason": "已有纯 GDScript 测试可复用",
-      "integration": "读取工程现有测试并执行；新安装单独确认；不同时强装另一框架。",
+      "selectionReason": "继续使用已有 GDScript 测试",
+      "integration": "沿用项目现有测试入口。需要新安装时另行确认，不强制换用另一框架。",
       "licenseNote": "MIT",
       "runtimeStatus": "NOT_RUN"
     },
@@ -133,8 +133,8 @@
         "S10"
       ],
       "defaultEnabled": false,
-      "selectionReason": "场景/脚本/.NET 测试支持",
-      "integration": "按工程语言和上游矩阵选 release；正确使用 shell runner，不传给 godot -s。",
+      "selectionReason": "场景、脚本与 .NET 测试",
+      "integration": "按项目语言和框架版本选择现有测试入口；Shell 脚本不能作为 GDScript 执行。",
       "licenseNote": "MIT",
       "runtimeStatus": "NOT_RUN"
     },
@@ -147,9 +147,9 @@
         "S18"
       ],
       "defaultEnabled": false,
-      "selectionReason": "需要更可靠语义交互时使用",
-      "integration": "用户已部署才接入；分开验证 native 库/引擎 addon/桥接/目标/输入释放。",
-      "licenseNote": "按实际选定发行 LICENSE 与 native 组件逐项核查",
+      "selectionReason": "游戏界面的语义交互",
+      "integration": "仅供已配置该工具的项目参考，需单独检查编辑器插件、连接和输入释放；不是默认集成。",
+      "licenseNote": "按所选发行版 LICENSE 与 本地组件逐项核查",
       "runtimeStatus": "NOT_RUN"
     },
     {
@@ -161,8 +161,8 @@
         "S19"
       ],
       "defaultEnabled": false,
-      "selectionReason": "创作工具可按需发现，无需我们包装每个应用",
-      "integration": "复用已配置服务；不批量安装 adapter，不绕过允许列表。",
+      "selectionReason": "连接已有创作工具",
+      "integration": "参考已配置的服务，不批量安装连接组件；各应用许可和服务费用需分别确认。",
       "licenseNote": "core MIT；各 adapter/宿主/服务许可与收费分别核查",
       "runtimeStatus": "NOT_RUN"
     },
@@ -175,8 +175,8 @@
         "S16"
       ],
       "defaultEnabled": false,
-      "selectionReason": "已有外部地图工作流继续使用",
-      "integration": "编辑/导出与 Godot importer 分别验证；不迁移现有 TileMap。",
+      "selectionReason": "继续使用现有地图制作流程",
+      "integration": "地图导出和 Godot 导入分别检查，保留项目现有 TileMap。",
       "licenseNote": "GPL 系列，以目标版本 LICENSE 核查；地图素材许可独立",
       "runtimeStatus": "NOT_RUN"
     },
@@ -189,8 +189,8 @@
         "S17"
       ],
       "defaultEnabled": false,
-      "selectionReason": "已有关卡数据可延续",
-      "integration": "导入器是独立兼容点，不假定完整 MCP；未测不显示 ready。",
+      "selectionReason": "继续使用现有关卡数据",
+      "integration": "需要对应 Godot 导入器；并不提供完整编辑器连接，使用前单独检查兼容性。",
       "licenseNote": "以目标版本 LICENSE 核查",
       "runtimeStatus": "NOT_RUN"
     },
@@ -203,9 +203,9 @@
         "S20"
       ],
       "defaultEnabled": false,
-      "selectionReason": "发布时参考现成模板",
-      "integration": "不变成本机常驻工具，不自动发布/写 secrets。",
-      "licenseNote": "按选定版本 LICENSE/NOTICE 再核查",
+      "selectionReason": "参考游戏构建与发布流程",
+      "integration": "作为 CI 模板参考；不自动创建远程发布作业或写入密钥。",
+      "licenseNote": "使用时查看所选版本的 LICENSE/NOTICE",
       "runtimeStatus": "NOT_RUN"
     },
     {
@@ -217,8 +217,8 @@
         "S22"
       ],
       "defaultEnabled": false,
-      "selectionReason": "避免重复设计基础实现",
-      "integration": "只读查阅/复制经许可小例，选择目标版本；不是重写工程模板。",
+      "selectionReason": "查阅 Godot 基础示例",
+      "integration": "选择与目标版本相符的示例，复制时保留代码及素材的许可。",
       "licenseNote": "代码及个别素材许可分别保留",
       "runtimeStatus": "NOT_RUN"
     },
@@ -231,8 +231,8 @@
         "S23"
       ],
       "defaultEnabled": false,
-      "selectionReason": "需要对话时复用",
-      "integration": "用户确认新依赖后再实施，不是默认 MCP。",
+      "selectionReason": "制作游戏对话",
+      "integration": "按项目需要评估并确认新依赖，不随本插件安装。",
       "licenseNote": "MIT；所含素材另核查",
       "runtimeStatus": "NOT_RUN"
     },
@@ -245,8 +245,8 @@
         "S24"
       ],
       "defaultEnabled": false,
-      "selectionReason": "复杂状态组织的可选复用",
-      "integration": "保留项目原有状态机制，不因存在插件就重构。",
+      "selectionReason": "组织复杂状态",
+      "integration": "按项目需要评估，保留已有状态机制，不自动重构。",
       "licenseNote": "代码/示例素材许可分别核查",
       "runtimeStatus": "NOT_RUN"
     },
@@ -259,8 +259,8 @@
         "S25"
       ],
       "defaultEnabled": false,
-      "selectionReason": "复杂 AI 的可选复用",
-      "integration": "GDExtension 与 engine module 版本/平台有区别；不要默认编译引擎。",
+      "selectionReason": "组织复杂游戏 AI 行为",
+      "integration": "扩展库和引擎模块的版本与平台条件不同，使用前单独确认；不自动编译引擎。",
       "licenseNote": "MIT-style code；logo/demo art 为 CC-BY 等独立许可",
       "runtimeStatus": "NOT_RUN"
     },
@@ -273,8 +273,8 @@
         "S21"
       ],
       "defaultEnabled": false,
-      "selectionReason": "管理器参考/已有用户环境复用",
-      "integration": "不强依赖、不 fork 为主任务；不得双挂同 server。",
+      "selectionReason": "参考已有 MCP 管理方式",
+      "integration": "不是本插件的必需依赖，避免将同一服务重复连接。",
       "licenseNote": "Apache-2.0 与其 NOTICE 中 MIT 部分",
       "runtimeStatus": "NOT_RUN"
     },
@@ -287,8 +287,8 @@
         "S27"
       ],
       "defaultEnabled": false,
-      "selectionReason": "小工具面备选",
-      "integration": "不要求首版同时适配；未测不可在 UI 伪装可用。",
+      "selectionReason": "其他 Godot 连接方案的参考",
+      "integration": "尚未集成，不在设置页显示为可用连接。",
       "licenseNote": "MIT",
       "runtimeStatus": "NOT_RUN"
     },
@@ -301,8 +301,8 @@
         "S28"
       ],
       "defaultEnabled": false,
-      "selectionReason": ".NET 项目有原生编辑器桥接选择",
-      "integration": "不改变通用版默认；保留 .NET 依赖和版本条件。",
+      "selectionReason": ".NET 项目的其他连接方案",
+      "integration": "尚未集成，不改变当前默认连接；需另外检查 .NET 和 Godot 版本。",
       "licenseNote": "MIT",
       "runtimeStatus": "NOT_RUN"
     },
@@ -315,8 +315,8 @@
         "S29"
       ],
       "defaultEnabled": false,
-      "selectionReason": "原生 preset/Skill 挂载参考",
-      "integration": "不整体依赖单角色 PTC/市场，不引入它自己的市场。",
+      "selectionReason": "参考 DSH 的 Godot 预设与工作流实现",
+      "integration": "作为源码参考，不依赖其完整工作台或插件市场。",
       "licenseNote": "MIT；复用片段需保留 notices",
       "runtimeStatus": "NOT_RUN"
     }

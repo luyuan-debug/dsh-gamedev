@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only delivery contract checks, not DSH/Godot/model acceptance.
+"""Read-only checks of source and package structure.
 
 Run from any directory. JSON goes to stdout; no files are written. Package
 members are read in memory, never extracted. An optional native inventory must
@@ -44,7 +44,7 @@ def sha256(data: bytes) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[2])
-    parser.add_argument("--package", type=Path, help="Exact delivery .tgz to inspect")
+    parser.add_argument("--package", type=Path, help="Exact plugin .tgz to inspect")
     parser.add_argument("--expected-source-fingerprint", help="Previously recorded production source digest")
     parser.add_argument("--native-inventory", type=Path, help="Actual native host inventory JSON, optional")
     args = parser.parse_args()

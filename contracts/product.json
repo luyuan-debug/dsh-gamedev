@@ -25,7 +25,7 @@
   "platformTargets": {
     "primary": "macos-arm64",
     "secondary": "linux-x64",
-    "supportPolicy": "See docs/VERIFICATION.md for measured support; target declarations are not acceptance evidence."
+    "supportPolicy": "平台目标用于规划测试；当前支持范围见 docs/VERIFICATION.md。"
   },
   "preserveLanguages": [
     "GDScript",

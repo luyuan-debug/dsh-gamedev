@@ -1,4 +1,4 @@
-# Portable source checks only. Native DSH/Godot/model acceptance is separate.
+# Build and source tests. DSH, Godot and model-service tests run separately.
 name: Source checks
 on:
   push:
@@ -57,5 +57,5 @@ jobs:
         run: python3 -B -m unittest discover -s tests/publication -p 'test_*.py' -v
       - name: Run dependency-free guarded launcher checks
         run: python3 -B -m unittest discover -s tests/bridge -p 'test_guarded_main.py' -v
-      - name: Read-only source contract
+      - name: Check source and package structure
         run: python3 -B tests/contracts/check_contracts.py

@@ -1,70 +1,66 @@
-# 需求追踪表
+# 测试用例覆盖表
 
-本表保存执行包全部 49 项需求；38 项为核心。此表是验收基线模板，未逐项填入本版状态；不从 0.1.0 继承通过。实际发行结果以本版 VERIFICATION.md、独立 acceptance-results.json 及其证据为准。源码中的 acceptance-results.template.json 保持 NOT_RUN 初态。
+这份清单列出 49 个检查目标，其中 38 个为核心要求。编号对应 [cases.json](../acceptance/cases.json)，供维护者定位测试；它不是逐项通过报告。
 
-0.2.0 的新增回归重点为生命周期与隔离安装：见 LIFECYCLE.md、SETUP.md、tests/lifecycle.test.mjs 与 tests/setup.test.mjs。纯检查不能代替同一最终 tarball 的实际原生宿主和 Godot 验收。
+当前发行版已经执行的检查与未验证功能见 [测试说明](VERIFICATION.md)。空白结果模板保持 `NOT_RUN`，重新测试时另存一份，并记录实际结果与证据。源码检查、编辑器运行和模型开发分别记录，不能互相替代。
 
-静态、原生宿主确定性、真实引擎、真实模型开发、GUI/运行五层分别报告；测试程序直接调用工具不能算作 Agent 自主开发。
+| 编号 | 适用范围 | 检查目标 | 源码或检查方式 |
+| --- | --- | --- | --- |
+| P01 | 核心 | 安装包可安装 | [插件入口](../src/index.ts) / [结构检查](../tests/contracts/README.md) |
+| P02 | 核心 | 一个 Godot 2D 预设与一个工作流 | [插件入口](../src/index.ts) / [结构检查](../tests/contracts/README.md) |
+| P03 | 核心 | 保留 DSH 文件、搜索与终端工具 | [插件入口](../src/index.ts) / [结构检查](../tests/contracts/README.md) |
+| P04 | 核心 | 其他开发模式保持原状 | [插件入口](../src/index.ts) / [结构检查](../tests/contracts/README.md) |
+| P05 | 核心 | 包内不含个人路径、密钥或缓存 | [插件入口](../src/index.ts) / [结构检查](../tests/contracts/README.md) |
+| C01 | 核心 | 缺少配置时不自动安装 | [设置校验](../src/config.ts) / [设置页](../src/client.tsx) / `tests/config.test.mjs` |
+| C02 | 核心 | 检查必要设置 | [设置校验](../src/config.ts) / [设置页](../src/client.tsx) / `tests/config.test.mjs` |
+| C03 | 核心 | 错误设置不覆盖有效值 | [设置校验](../src/config.ts) / [设置页](../src/client.tsx) / `tests/config.test.mjs` |
+| C04 | 核心 | 可选工具缺失或关闭 | [设置校验](../src/config.ts) / [设置页](../src/client.tsx) / `tests/config.test.mjs` |
+| C05 | 核心 | 配置变更后不切换旧会话目标 | [设置校验](../src/config.ts) / [设置页](../src/client.tsx) / `tests/config.test.mjs` |
+| C06 | 核心 | 关闭连接后拒绝新调用 | [设置校验](../src/config.ts) / [设置页](../src/client.tsx) / `tests/config.test.mjs` |
+| C07 | 核心 | 只修改本插件设置 | [设置校验](../src/config.ts) / [设置页](../src/client.tsx) / `tests/config.test.mjs` |
+| C08 | 核心 | 设置页与配置文件操作 | [设置校验](../src/config.ts) / [设置页](../src/client.tsx) / `tests/config.test.mjs` |
+| M01 | 核心 | 连接初始化与离线状态 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M02 | 核心 | 默认可用的编辑器工具 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M03 | 核心 | 开启工具组后能实际调用 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M04 | 核心 | 拒绝修改错误工程 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M05 | 核心 | 重连时拒绝替换编辑器 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M06 | 核心 | 端口与重复连接冲突 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M07 | 核心 | 检查和服务进程退出后清理 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M08 | 核心 | 工具组开关不扩大会话权限 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M09 | 核心 | 保留 DSH 操作审批 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M10 | 核心 | 写操作超时后先检查结果 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M11 | 核心 | 模型实际收到运行画面 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M12 | 核心 | 模型不能看图时明确说明 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M13 | 核心 | 取消输入后释放按键 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M14 | 核心 | 多个会话的连接限制 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| M15 | 核心 | 卸载时不关闭用户已有进程 | [会话连接](../src/session.ts) / [连接保护](../bridge/README.md) / `tests/bridge/` |
+| F01 | 核心 | 通过对话创建可运行的 2D 示例 | [开发工作流](../skills/godot-2d-workflow/SKILL.md) / 真实编辑器与模型测试 |
+| F02 | 核心 | 保存场景后重新打开 | [开发工作流](../skills/godot-2d-workflow/SKILL.md) / 真实编辑器与模型测试 |
+| F03 | 核心 | 修改已有工程 | [开发工作流](../skills/godot-2d-workflow/SKILL.md) / 真实编辑器与模型测试 |
+| F04 | 核心 | 复现、修复并重新测试错误 | [开发工作流](../skills/godot-2d-workflow/SKILL.md) / 真实编辑器与模型测试 |
+| F05 | 核心 | 界面、分辨率和输入 | [开发工作流](../skills/godot-2d-workflow/SKILL.md) / 真实编辑器与模型测试 |
+| F06 | 核心 | 资源处理与导入 | [开发工作流](../skills/godot-2d-workflow/SKILL.md) / 真实编辑器与模型测试 |
+| F07 | 核心 | 脚本错误与失败结果 | [开发工作流](../skills/godot-2d-workflow/SKILL.md) / 真实编辑器与模型测试 |
+| F08 | 核心 | 导出并运行同平台调试版 | [开发工作流](../skills/godot-2d-workflow/SKILL.md) / 真实编辑器与模型测试 |
+| L01 | 按项目或环境选择 | 保留并构建 C# 工程 | [构建参考](../skills/godot-2d-workflow/references/testing.md) / 对应语言工具链 |
+| L02 | 按项目或环境选择 | 保留并构建 C++ 工程 | [构建参考](../skills/godot-2d-workflow/references/testing.md) / 对应语言工具链 |
+| O01 | 按项目或环境选择 | 调用已有可选命令行工具 | [工具目录](../catalog/README.md) / 可选工具测试 |
+| O02 | 按项目或环境选择 | 使用已有测试框架 | [工具目录](../catalog/README.md) / 可选工具测试 |
+| O03 | 按项目或环境选择 | Gua 交互测试 | [工具目录](../catalog/README.md) / 可选工具测试 |
+| O04 | 按项目或环境选择 | 创作工具连接测试 | [工具目录](../catalog/README.md) / 可选工具测试 |
+| X01 | 按项目或环境选择 | 与 Projects 共存时互不干扰 | [功能约定](../contracts/README.md) / 独立应用环境测试 |
+| X02 | 按项目或环境选择 | 与 Agent Team 共存时保持各自功能 | [功能约定](../contracts/README.md) / 独立应用环境测试 |
+| X03 | 按项目或环境选择 | 遵守 Projects 的工具限制 | [功能约定](../contracts/README.md) / 独立应用环境测试 |
+| X04 | 按项目或环境选择 | DSH 子会话中选择 Godot 2D | [功能约定](../contracts/README.md) / 独立应用环境测试 |
+| R01 | 核心 | 重启后采用当前配置 | [安装程序](technical/SETUP.md) / `tests/setup.test.mjs` |
+| R02 | 核心 | 安装、停用与卸载 | [安装程序](technical/SETUP.md) / `tests/setup.test.mjs` |
+| R03 | 按项目或环境选择 | 其他操作系统单独测试 | [安装程序](technical/SETUP.md) / `tests/setup.test.mjs` |
 
-| ID | 要求 | 验收目标 | 所需层 | 实现责任 | 源码/测试/证据 |
-|---|---|---|---|---|---|
-| P01 | core | 同一 tarball 可安装 | static, native-host | bundle / preset / native engineering composition / package files | 待实测填写 |
-| P02 | core | 只有一个预设和一个自有 Skill | static, native-host | bundle / preset / native engineering composition / package files | 待实测填写 |
-| P03 | core | 保留原生工程工具 | native-host | bundle / preset / native engineering composition / package files | 待实测填写 |
-| P04 | core | 普通预设不被污染 | native-host | bundle / preset / native engineering composition / package files | 待实测填写 |
-| P05 | core | 包内容无路径凭据与缓存 | static | bundle / preset / native engineering composition / package files | 待实测填写 |
-| C01 | core | 未配置不自动安装 | native-host | native settings namespace / client / validation / effective configuration | 待实测填写 |
-| C02 | core | 显式有效配置 | static, native-host | native settings namespace / client / validation / effective configuration | 待实测填写 |
-| C03 | core | 无效配置回滚 | static, native-host | native settings namespace / client / validation / effective configuration | 待实测填写 |
-| C04 | core | 可选项缺失/关闭 | static, native-host | native settings namespace / client / validation / effective configuration | 待实测填写 |
-| C05 | core | 配置变化无静默漂移 | native-host | native settings namespace / client / validation / effective configuration | 待实测填写 |
-| C06 | core | 禁用后的调用拒绝 | native-host | native settings namespace / client / validation / effective configuration | 待实测填写 |
-| C07 | core | 只修改自己的设置 | native-host | native settings namespace / client / validation / effective configuration | 待实测填写 |
-| C08 | core | Web 与无 GUI 路径 | native-host, gui-runtime | native settings namespace / client / validation / effective configuration | 待实测填写 |
-| M01 | core | 初始化与离线状态 | native-host, engine-integration | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M02 | core | 默认工具面 | native-host, engine-integration | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M03 | core | 按需 Toolset 真正可调用 | native-host, engine-integration, real-model | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M04 | core | 错误项目拒写 | engine-integration | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M05 | core | 重连和 peer replacement | engine-integration | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M06 | core | 端口和双挂冲突 | engine-integration | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M07 | core | 协议 probe/serve 清理 | native-host, engine-integration | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M08 | core | 共享 Toolset 非独立授权 | native-host | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M09 | core | 原生审批保持 | native-host | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M10 | core | 写超时不盲重试 | engine-integration | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M11 | core | 截图到模型的真实图像链 | real-model, gui-runtime | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M12 | core | 非视觉模型诚实降级 | native-host | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M13 | core | 输入取消会释放 | engine-integration, gui-runtime | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M14 | core | 多会话边界 | native-host, engine-integration | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| M15 | core | 卸载不关闭借用进程 | native-host, engine-integration | native MCP mount / bridge startup safety adapter / dispatch guards / lifecycle | 待实测填写 |
-| F01 | core | 一个预设创建可玩 2D 小样 | real-model, gui-runtime | Godot 2D Agent / disposable game fixtures / actual engine / debug export | 待实测填写 |
-| F02 | core | 场景保存并重开 | engine-integration, gui-runtime | Godot 2D Agent / disposable game fixtures / actual engine / debug export | 待实测填写 |
-| F03 | core | 已有工程增量修改 | real-model, engine-integration | Godot 2D Agent / disposable game fixtures / actual engine / debug export | 待实测填写 |
-| F04 | core | 复现修复回归 | real-model, engine-integration, gui-runtime | Godot 2D Agent / disposable game fixtures / actual engine / debug export | 待实测填写 |
-| F05 | core | UI 与分辨率输入 | gui-runtime | Godot 2D Agent / disposable game fixtures / actual engine / debug export | 待实测填写 |
-| F06 | core | 资源处理和导入 | engine-integration, gui-runtime | Godot 2D Agent / disposable game fixtures / actual engine / debug export | 待实测填写 |
-| F07 | core | 解析和失败状态真实 | engine-integration | Godot 2D Agent / disposable game fixtures / actual engine / debug export | 待实测填写 |
-| F08 | core | 同平台 debug export | engine-integration, gui-runtime | Godot 2D Agent / disposable game fixtures / actual engine / debug export | 待实测填写 |
-| L01 | conditional-csharp | 保持 C# 工程 | engine-integration, gui-runtime | existing language pipeline / actual compiler and engine loading | 待实测填写 |
-| L02 | conditional-cpp | 保持 C++ 工程 | engine-integration, gui-runtime | existing language pipeline / actual compiler and engine loading | 待实测填写 |
-| O01 | optional-cli | CLI 基本项真实使用 | engine-integration | allowlist / probes / existing optional tools and project addons | 待实测填写 |
-| O02 | optional-project-framework | 已有测试框架继续用 | engine-integration | allowlist / probes / existing optional tools and project addons | 待实测填写 |
-| O03 | optional-gua | Gua 单独验收 | engine-integration, gui-runtime | allowlist / probes / existing optional tools and project addons | 待实测填写 |
-| O04 | optional-dcc | DCC 单独验收 | engine-integration | allowlist / probes / existing optional tools and project addons | 待实测填写 |
-| X01 | conditional-projects | Projects 共存不干扰 | native-host | isolated Profile coexistence / upstream tool policy | 待实测填写 |
-| X02 | conditional-team | Team 共存不接管 | native-host | isolated Profile coexistence / upstream tool policy | 待实测填写 |
-| X03 | conditional-projects | 不绕过 Projects 的 MCP 拒绝 | native-host | isolated Profile coexistence / upstream tool policy | 待实测填写 |
-| X04 | conditional-subagent | 原生 fresh child 可选验证 | native-host | isolated Profile coexistence / upstream tool policy | 待实测填写 |
-| R01 | core | 重启恢复不伪称旧 revision | native-host | restart / installed-tarball lifecycle / platform-specific evidence | 待实测填写 |
-| R02 | core | 真实安装/禁用/卸载完整闭环 | native-host, engine-integration | restart / installed-tarball lifecycle / platform-specific evidence | 待实测填写 |
-| R03 | secondary-platform | 第二平台单独报告 | native-host, engine-integration, real-model, gui-runtime | restart / installed-tarball lifecycle / platform-specific evidence | 待实测填写 |
+## 测试时注意
 
-## 特别检查
-
-- scope：普通 preset 无污染；禁用/排队调用重查；旧会话不漂移到新目标；Toolset 全局开启不授予其他 scope 权限。
-- 项目身份：配置 realpath、会话工作区、真实 editor 项目一致；连接代际变化重新验证；错误项目或身份未知拒写。
-- 审批：沿用原生批准/拒绝链；不直接调用底层 handler；confirm 参数不能替代批准。
-- 图像：M11 必须记录图像 content block/附件到达授权模型及模型对随机画面标记的观察；只有 PNG 或工具文本路径不够。M12 单独验证非视觉降级。
-- 模型开发：F01、F03、F04 保存 Godot 2D Agent 轨迹与差异；Codex 或测试脚本编写完成代码不能冒充该层。
-- 进程：probe/serve、取消、失败、禁用、卸载均核对拥有关系；不停止借用 editor/HTTP 服务。
-- 构建一致性：源码指纹、tarball、实际安装记录、GUI/模型证据属于同一构建；改变构建后重测受影响项。
-- 最终检查两轮：需求→源码→测试→证据；按安装文档对交付同一 tarball 进行干净隔离安装。
+- 核对 DSH 会话、打开的 Godot 工程与配置目录一致。切换目标或重连后重新检查。
+- 超时、取消或断开后，先确认文件和场景实际发生了什么，再决定是否重试。
+- 模型识图需要确认图像实际传给了支持图片的模型，并检查其观察结果；截图路径本身不够。
+- 模型开发测试要记录模型实际完成的修改，测试脚本直接写入代码属于另外一类检查。
+- 安装、停用和卸载只操作测试环境，保留已有游戏、配置与其他进程。
+- 所有结果注明安装包校验值。重新构建后，重做受影响的测试。

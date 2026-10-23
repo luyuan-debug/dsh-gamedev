@@ -59,6 +59,7 @@
 ## 帮助与反馈
 
 - [安装、启动与日常使用](docs/SETUP.md)
+- [全部文档](docs/README.md)
 - [关闭与卸载](docs/UNINSTALL.md)
 - [版本更新](CHANGELOG.md)
 - [报告问题或提出建议](https://github.com/luyuan-debug/dsh-gamedev/issues)
@@ -69,9 +70,9 @@
 <summary>开发者资料</summary>
 
 - [从源码构建与测试](docs/INSTALL.md#从源码进行锁定构建)
-- [编辑器连接与故障恢复](docs/LIFECYCLE.md)
-- [安装程序工作原理](docs/technical/SETUP.md)
-- [卸载程序工作原理](docs/technical/UNINSTALL.md)
+- [连接与故障排查](docs/LIFECYCLE.md)
+- [安装程序参考](docs/technical/SETUP.md)
+- [卸载程序参考](docs/technical/UNINSTALL.md)
 - [测试范围与记录](docs/VERIFICATION.md)
 - [第三方依赖与许可](THIRD_PARTY_NOTICES.md)
 

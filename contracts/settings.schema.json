@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Proposed dsh-gamedev settings contract (not native DSH import format)",
+  "title": "插件设置数据模型（说明与测试用，不能直接导入 DSH）",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -25,7 +25,7 @@
         "string",
         "null"
       ],
-      "description": "Explicit real project root; runtime must validate realpath and authorization."
+      "description": "游戏工程的绝对路径；运行时检查实际路径和访问权限。"
     },
     "godotExecutable": {
       "type": [
@@ -60,35 +60,35 @@
             "string",
             "null"
           ],
-          "description": "Already installed pinned program; not an installer command."
+          "description": "已经安装的固定版本程序路径，不是安装命令。"
         },
         "endpoint": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Validate loopback/no redirects to remote; never contain inline secrets."
+          "description": "本机服务地址，不允许重定向到远程或包含密钥；本版 HTTP 模式不可用。"
         },
         "bridgeUrl": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Explicit loopback WebSocket bridge URL shared with the addon; validate against actual upstream contract."
+          "description": "与 Godot 编辑器插件一致的本机 WebSocket 地址，需要包含端口。"
         },
         "bridgeSecretRef": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Host-supported reference for editor-bridge authentication, not the token value."
+          "description": "保存连接令牌的环境变量名称，不是令牌值。"
         },
         "httpSecretRef": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Host-supported reference for an existing HTTP MCP service, separate from bridge authentication."
+          "description": "HTTP 服务凭据的环境变量名称，与编辑器令牌分开；本版 HTTP 模式不可用。"
         }
       }
     },

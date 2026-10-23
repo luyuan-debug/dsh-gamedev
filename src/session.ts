@@ -26,7 +26,7 @@ export async function portFree(url: string) {
 export function apply(ctx: any, config: { definitionInstance: string }) {
   const owner = ownerFor(ctx.root, config.definitionInstance);
   if (!owner) {
-    ctx.tools.guard((exec: any) => exec.name.startsWith(namespace) ? 'This Godot preset definition was retired. Start a new session using the enabled current preset.' : undefined);
+    ctx.tools.guard((exec: any) => exec.name.startsWith(namespace) ? 'The plugin was reloaded. Open a new Godot 2D session.' : undefined);
     return;
   }
   const generation = scopeOf(ctx);
@@ -62,8 +62,8 @@ export function apply(ctx: any, config: { definitionInstance: string }) {
         if (project(cwd) !== binding.projectRoot) throw new Error('Session workspace differs from the configured Godot project. Select that workspace or open a new session.');
         bindings.set(lease.agent, binding);
         if ([...ctx.tools.view(lease.agent).visible.keys()].some((tool: any) => !tool.startsWith(namespace) && tool.endsWith('__godot_health_check'))) throw new Error('Another Godot MCP is already visible. Disconnect it before using this preset.');
-        if (binding.bridgeMode !== 'stdio') throw new Error('Existing HTTP is unavailable until the native SDK supports redirect confinement.');
-        if (!process.env[binding.bridgeSecretRef]) throw new Error('Bridge token environment reference is unavailable. Launch the prepared isolated environment.');
+        if (binding.bridgeMode !== 'stdio') throw new Error('HTTP connections are not supported in this release. Use the local connection program.');
+        if (!process.env[binding.bridgeSecretRef]) throw new Error('The connection token is missing. Start this development directory with the launch command.');
         await portFree(binding.bridgeUrl);
         if (revoked()) throw new Error('Bridge activation was revoked.');
         candidate = ctx.plugin(MCP, {
@@ -96,19 +96,19 @@ export function apply(ctx: any, config: { definitionInstance: string }) {
   owner.runtime = lifecycle;
   const reason = (exec: any): string | undefined => {
     if (!exec.name.startsWith(namespace)) return;
-    if (!owner.current()) return 'This Godot preset definition was unloaded. Start a new session using the enabled current preset.';
+    if (!owner.current()) return 'The plugin was unloaded. Enable it and open a new Godot 2D session.';
     const settings = owner.read();
     if (!settings.enabled) return 'Godot bridge disabled in Settings.';
-    if (!inGeneration(exec.agent)) return 'This session belongs to an earlier Godot preset definition. Open a new Godot 2D session.';
-    if (!compatible(exec.agent, settings)) return 'Godot binding changed. This session retains its original target; open a new session for the saved project.';
-    if (!lifecycle.owns(exec.agent)) return 'This bridge has one owning session, or is still starting/stopping. Wait for cleanup and use the owning session.';
+    if (!inGeneration(exec.agent)) return 'This session was opened before the plugin reloaded. Open a new Godot 2D session.';
+    if (!compatible(exec.agent, settings)) return 'The project settings changed. This session still uses the original project; open a new session for the saved project.';
+    if (!lifecycle.owns(exec.agent)) return 'The connection is starting, stopping or in use by another session. Wait for cleanup or return to the session using it.';
     const tool = pinned.get(exec.name);
-    if (!tool) return 'Unreviewed upstream tool refused; pin and review its schema before using it.';
-    if (!schemasMatch(ctx.tools.get(exec.name, exec.agent)?.parameters, tool.parameters)) return 'Upstream tool schema differs from the pinned reviewed contract.';
+    if (!tool) return 'This tool is not in the supported Godot tool list. Check the installed bridge version.';
+    if (!schemasMatch(ctx.tools.get(exec.name, exec.agent)?.parameters, tool.parameters)) return 'The tool parameters differ from the supported version. Check the installed bridge version.';
     const inputDenied = inputRefusal(tool.name, exec.arguments); if (inputDenied) return inputDenied;
     const lease = lifecycle.lease!;
-    if (tool.name === 'godot_input_play_sequence' && Date.now() < (reservedInput.get(lease) ?? 0)) return 'Wait for the previous bounded input sequence before starting another.';
-    if (busy.has(lease)) return 'Another Godot call is in progress; use one serial editor channel.';
+    if (tool.name === 'godot_input_play_sequence' && Date.now() < (reservedInput.get(lease) ?? 0)) return 'Wait for the previous input sequence to finish before starting another.';
+    if (busy.has(lease)) return 'Another Godot command is running. Wait for it to finish.';
   };
   ctx.tools.guard(reason);
   ctx.on('tools/pre-execute', async (exec: any, next: any) => {
@@ -134,13 +134,13 @@ export function apply(ctx: any, config: { definitionInstance: string }) {
     if (!lease || lease !== lifecycle.lease || !lifecycle.owns(exec.agent)) return;
     const tool = pinned.get(exec.name);
     if (result.isError) owner.state.reason = tool?.meta?.safety_class !== 'read_only'
-      ? 'The last mutation failed or was canceled after dispatch. It may already have applied. Read back the project before retrying; reconnection does not replay writes.'
-      : 'Last MCP call failed. Read its original error. The native client may be recovering its connection.';
+      ? 'The last change failed or was canceled after it was sent. It may have changed the project. Read the current state before retrying; reconnecting does not repeat the command.'
+      : 'The last Godot command failed. Read the error details; the connection may be recovering.';
     else if (tool?.name === 'godot_health_check') {
       const info = result.value?.structuredContent;
       if (info && typeof info.bridge_connected === 'boolean') {
         owner.state.lastHealthAt = new Date().toISOString(); owner.state.lastEditorConnected = info.bridge_connected;
-        owner.state.reason = `Last health check ${owner.state.lastHealthAt}: editor ${info.bridge_connected ? 'connected' : 'disconnected'}. This is a timestamped observation, not continuous monitoring.`;
+        owner.state.reason = `Last health check ${owner.state.lastHealthAt}: editor ${info.bridge_connected ? 'connected' : 'disconnected'}. This result is from the recorded check time.`;
       }
     }
     owner.refresh();
@@ -150,7 +150,7 @@ export function apply(ctx: any, config: { definitionInstance: string }) {
     const ready = JSON.parse(settings.health || '{}').optionalTools ?? {};
     const paths: any = { gdtoolkit: settings.gdtoolkitExecutable, imagemagick: settings.imagemagickExecutable, ffmpeg: settings.ffmpegExecutable };
     const lines = Object.entries(ready).filter(([id, tool]: any) => settings.allowedOptionalTools.includes(id) && tool.status === 'READY').map(([id, tool]: any) => `${id}: ${tool.version}, executable ${JSON.stringify(paths[id])}`);
-    const ownership = !owner.current() ? 'This preset definition is retired; start a new session.' : context.agent && !compatible(context.agent, settings) ? 'This session retains an earlier target. Open a new session for the saved project.' : owner.state.reason;
+    const ownership = !owner.current() ? 'The plugin was reloaded; open a new Godot 2D session.' : context.agent && !compatible(context.agent, settings) ? 'This session retains an earlier target. Open a new session for the saved project.' : owner.state.reason;
     return `Godot 2D plugin ${VERSION}, definition ${BUILD_INFO.sourceFingerprint.slice(0,12)}; bridge ${inventory.version}. ${settings.enabled ? owner.state.status : 'DISABLED'}. ${ownership}\nConfigured project: ${JSON.stringify(settings.projectRoot)}. Configured Godot executable: ${JSON.stringify(settings.godotExecutable)}.\n${lines.length ? 'Allowed and ready CLI: '+lines.join('; ') : 'No optional CLI is both allowed and ready.'}\nCLI switches are usage policy, not a shell sandbox. One exact session and target own the bridge. Disabling releases only its owned bridge. Native reconnection does not replay writes. Read back after uncertain mutations. HTTP remains unavailable; do not install or upgrade tools.`;
   } });
   ctx.on('agent/created', ({ agent }: any) => lifecycle.request(agent));

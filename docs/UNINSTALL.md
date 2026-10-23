@@ -29,6 +29,6 @@ node package/scripts/setup.mjs uninstall \
 
 ## 卸载失败时
 
-若提示仍在运行，先确认游戏和启动终端已经正常关闭，再重试。若此前强制退出或断电，可能留有启动记录；请按 [故障处理说明](technical/SETUP.md#第三步检查并启动) 核对，保留日志，不要直接删除整个开发目录。
+若提示仍在运行，先确认游戏和启动终端已经正常关闭，再重试。若此前强制退出或断电，可能留有启动记录；请按 [故障处理说明](technical/SETUP.md#失败与恢复) 核对，保留日志，不要直接删除整个开发目录。
 
 若提示设置文件有冲突或无法解析，请保留错误信息和备份文件，提交 [Issue](https://github.com/luyuan-debug/dsh-gamedev/issues)。手动卸载和版本回退步骤见 [高级说明](technical/UNINSTALL.md)。

@@ -30,7 +30,7 @@ sessions/
 editor_data/
 export_templates/
 
-# Private acceptance material is delivered separately after review
+# Local test results and logs
 work/
 outputs/
 evidence/

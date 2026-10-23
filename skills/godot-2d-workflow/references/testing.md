@@ -9,14 +9,14 @@
 "$GODOT_BIN" --headless --path "$PROJECT_ROOT" --quit-after 120
 ```
 
-`--quit-after` 是引擎迭代数，不是秒。外层需要有真实墙钟超时与只清理自身进程的取消。Godot 可能忽略未知参数而不报警，所以先确认 help；退出码和日志要一起看。`--check-only --script …` 是指定脚本检查，不是保证整个工程编译成功。headless import 会写缓存，也可能运行工具脚本/插件，不是对不可信项目的安全只读扫描。来源 S09。
+`--quit-after` 是引擎迭代数，不是秒。调用程序还需设置实际时间超时，并只清理自己启动的进程。Godot 可能忽略未知参数而不报警，所以先确认 help；退出码和日志要一起看。`--check-only --script …` 是指定脚本检查，不是保证整个工程编译成功。headless import 会写缓存，也可能运行工具脚本/插件，不是对不可信项目的安全只读扫描。参考 [Godot command line documentation](https://docs.godotengine.org/en/stable/tutorials/editor/command_line_tutorial.html)。
 
-不要使用 `godot -s addons/gdUnit4/runtest.sh`：shell 脚本不是 GDScript。GUT/gdUnit4 调用方式按锁定版本官方说明核对，使用工程已有的正确入口；保留返回码，JUnit/HTML 为附加证据。没有框架时不要强装，先验证可运行和关键行为。来源 S10–S11。
+不要使用 `godot -s addons/gdUnit4/runtest.sh`：shell 脚本不是 GDScript。GUT/gdUnit4 调用方式按锁定版本官方说明核对，使用工程已有的正确入口；保留返回码，JUnit/HTML 为附加证据。没有框架时不要强装，先验证可运行和关键行为。参考 [GdUnit4](https://github.com/godot-gdunit-labs/gdUnit4)–[GUT](https://github.com/bitwes/Gut)。
 
 C#：识别 .sln/.csproj、Godot.NET SDK 版本和真实 .NET editor，运行项目的 `dotnet build`/测试，再实际启动加载目标程序集；GDScript parse 不能替代 C# build。
 
 C++：读取项目既有 SCons/CMake/godot-cpp/GDExtension 版本，编译对应平台/架构，验证 Godot 实际加载新库；不自动从 master 下载绑定，不把本机产物当其他平台可用。
 
-gdtoolkit 的 lint/format 是辅助，不是引擎类型检查。默认 `gdformat --check`，修改格式前看 diff，限定触及文件。兼容 Godot 4 的表述不能代替目标新语法测试。来源 S12。
+gdtoolkit 的 lint/format 是辅助，不是引擎类型检查。默认 `gdformat --check`，修改格式前看 diff，限定触及文件。兼容 Godot 4 的表述不能代替目标新语法测试。参考 [GDScript Toolkit](https://github.com/Scony/godot-gdscript-toolkit)。
 
 新项目样例应包含输入、胜负、HUD、暂停/恢复/重开和至少一个存取状态；测试行为不只看窗口能否出现。大型模拟加入固定种子、不变量与规模/耗时基线；性能结论必须记录硬件、构建模式和负载。

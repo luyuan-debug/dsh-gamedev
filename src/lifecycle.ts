@@ -32,7 +32,7 @@ export class NativeLease<A extends object, S> {
   }
   released(agent: A) {
     if (this.preferred === agent) this.preferred = undefined;
-    if (this.lease?.agent === agent) return this.revoke('The owning session closed.');
+    if (this.lease?.agent === agent) return this.revoke('The session using this connection closed.');
     return Promise.resolve();
   }
   /** Revocation is synchronous. Cleanup returns one shared, awaitable promise. */
@@ -44,13 +44,13 @@ export class NativeLease<A extends object, S> {
   }
   changed() {
     const lease = this.lease;
-    if (!this.hooks.enabled() || (lease && !this.hooks.compatible(lease.agent, this.hooks.settings()))) return this.revoke('Saved settings revoked this connection; an in-flight write may already have applied.');
+    if (!this.hooks.enabled() || (lease && !this.hooks.compatible(lease.agent, this.hooks.settings()))) return this.revoke('The connection settings changed. A command already sent may have changed the project; check it before retrying.');
     return this.schedule();
   }
   shutdown() {
     if (this.retirePromise) return this.retirePromise;
     this.closed = true; this.preferred = undefined;
-    this.retirePromise = this.revoke('This plugin definition was unloaded.').then(() => undefined);
+    this.retirePromise = this.revoke('The plugin was unloaded.').then(() => undefined);
     return this.retirePromise;
   }
   owns(agent: A) {
@@ -83,13 +83,13 @@ export class NativeLease<A extends object, S> {
       await this.stop(old);
       if (this.lease === old) this.lease = undefined;
     }
-    if (this.closed) { this.hooks.state('UNLOADED', 'This definition is retired; open a new Godot 2D session after enabling the plugin.'); return; }
-    if (!this.hooks.enabled()) { this.hooks.state('DISABLED', 'Bridge disabled. Its owned native MCP process has been released.'); return; }
+    if (this.closed) { this.hooks.state('UNLOADED', 'The plugin was reloaded or disabled. Enable it and open a new Godot 2D session.'); return; }
+    if (!this.hooks.enabled()) { this.hooks.state('DISABLED', 'Connection disabled. The connection program has stopped.'); return; }
     if (this.lease?.ready) return;
     const agent = this.preferred;
-    if (!agent || !this.hooks.eligible(agent)) { this.hooks.state('WAITING_FOR_SESSION', 'Select Godot 2D in a session bound to the configured project.'); return; }
+    if (!agent || !this.hooks.eligible(agent)) { this.hooks.state('WAITING_FOR_SESSION', 'Select Godot 2D in a session using the configured project folder.'); return; }
     const settings = this.hooks.settings();
-    if (!this.hooks.compatible(agent, settings)) { this.hooks.state('NEW_SESSION_REQUIRED', 'The saved target differs from this session binding. Open a new session for the configured project.'); return; }
+    if (!this.hooks.compatible(agent, settings)) { this.hooks.state('NEW_SESSION_REQUIRED', 'The project or connection settings changed. Open a new session for the saved project.'); return; }
     const revision = this.revision;
     await this.hooks.priorStop;
     const currentSettings = this.hooks.settings();
@@ -98,7 +98,7 @@ export class NativeLease<A extends object, S> {
     const revoked = Promise.withResolvers<void>();
     const lease: Lease<A, S> = { agent, settings, revision, ready: false, revoked: revoked.promise, revoke: () => revoked.resolve() };
     this.lease = lease;
-    this.hooks.state('STARTING', 'Starting the installed native MCP connection.', lease);
+    this.hooks.state('STARTING', 'Starting the Godot connection program.', lease);
     try {
       lease.mount = this.hooks.start(lease);
       await Promise.race([lease.mount.ready, lease.revoked.then(() => { throw new Error('Bridge activation was revoked.'); })]);
@@ -106,12 +106,12 @@ export class NativeLease<A extends object, S> {
         await this.stop(lease); if (this.lease === lease) this.lease = undefined; this.dirty = true; return;
       }
       lease.ready = true;
-      this.hooks.state('MCP_READY', 'Native MCP ready. Editor connectivity is verified by a health call; no continuous online claim.', lease);
+      this.hooks.state('MCP_READY', 'The connection program is ready. Check the editor connection before making changes.', lease);
     } catch (error: any) {
       await this.stop(lease);
       if (this.lease === lease) this.lease = undefined;
       if (this.closed || !this.hooks.enabled() || revision !== this.revision) { this.dirty = true; return; }
-      this.hooks.state('UNAVAILABLE', error?.message || 'Native MCP startup failed.');
+      this.hooks.state('UNAVAILABLE', error?.message || 'The Godot connection program could not start.');
     }
   }
 }

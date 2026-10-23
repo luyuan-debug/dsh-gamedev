@@ -431,7 +431,7 @@ export async function doctor(options, hooks = {}) {
     await check('dedicated loopback ports', async () => { await assertFree(manifest.webPort); await assertFree(manifest.bridgePort); return { web: manifest.webPort, bridge: manifest.bridgePort }; });
     await check('macOS Godot signature', async () => (await invoke('/usr/bin/codesign', ['--verify', '--strict', manifest.godotCopy], { timeout: 15_000, env: ownedEnv(manifest) })).output || 'standalone binary strict signature valid', false);
   }
-  return { status: checks.some(x => x.required && x.status !== 'PASS') ? 'NO_GO' : 'GO', scope: 'Existing-program checks are read-only. Owned-workspace checks additionally run a bounded headless probe in new task-only state and user data; GUI, model connection and export acceptance are separate.', checks };
+  return { status: checks.some(x => x.required && x.status !== 'PASS') ? 'NO_GO' : 'GO', scope: 'Software-path checks are read-only. Checking a development directory also runs a temporary headless test project with a time limit. Check editor graphics, model connections and game exports separately.', checks };
 }
 async function acquire(manifest, operation) {
   const lock = path.join(manifest.workspace, 'state/launch.lock');
@@ -483,7 +483,7 @@ export async function launch(options) {
     if (options['no-open']) args.push('--no-open');
     const host = await spawnOwned('dsh', manifest.tools.paths.dsh, args);
     const editor = await spawnOwned('godot', manifest.godotCopy, ['--editor', '--path', path.join(manifest.workspace, 'project'), '--rendering-method', 'gl_compatibility']);
-    process.stdout.write('Isolated DSH and task-owned Godot started. Create one Godot 2D session in this project. Native model/account settings remain your choice.\n');
+    process.stdout.write('DSH and Godot started for this development directory. Create a Godot 2D session using its project/ folder, and configure your model connection in DSH.\n');
     process.stdout.write('Browser: http://127.0.0.1:' + manifest.webPort + '/ (native launch opens authentication). Ctrl+C closes these two owned children.\n');
     const first = await Promise.race([host.completed, editor.completed]); await terminate();
     return { status: signalCode || first.code || logFailure ? 'STOPPED_WITH_ERROR' : 'STOPPED', firstExited: first, exitCode: signalCode || first.code || (logFailure ? 1 : 0), ...(logFailure ? { error: logFailure } : {}), runtimeUserData: manifest.runtimeUserData, note: 'Only directly launched children are signalled. Game child processes, game files, caches and saves are retained; close a running game normally in Godot.' };

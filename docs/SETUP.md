@@ -77,7 +77,7 @@ node package/scripts/setup.mjs prepare \
 
 默认使用本机端口 `53190` 和 `19090`。若提示端口占用，可在命令末尾增加 `--port 53191 --bridge-port 19091`，选用其他空闲端口。
 
-安装失败时请保留输出和目录内的 `logs/`。解决问题后，换一个尚不存在的目录重试。需要离线安装时，见 [离线安装说明](technical/SETUP.md#第二步准备一个全新目录)。
+安装失败时请保留输出和目录内的 `logs/`。解决问题后，换一个尚不存在的目录重试。需要离线安装时，见 [离线安装说明](technical/SETUP.md#依赖下载与离线安装)。
 
 ## 4. 启动并开始开发
 
@@ -119,4 +119,4 @@ node package/scripts/setup.mjs launch \
 
 见 [关闭与卸载](UNINSTALL.md)。
 
-更详细的依赖、目录、日志和故障处理机制见 [安装程序工作原理](technical/SETUP.md)。
+更详细的依赖、目录、日志和故障处理机制见 [安装程序参考](technical/SETUP.md)。
