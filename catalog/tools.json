@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "policy": "metadata-not-an-installer-or-capability-router",
+  "entries": [
+    {
+      "id": "dsh-native",
+      "name": "DSH 原生工程工具/预设/MCP",
+      "kind": "host",
+      "tier": "core",
+      "sources": [
+        "S01",
+        "S02",
+        "S03",
+        "S26"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "已有能力不重造",
+      "integration": "保留当前受支持原生文件、终端、搜索、Skill、模型能力；不改变用户默认 preset。",
+      "licenseNote": "按选定版本 LICENSE/NOTICE 再核查",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "godot-editor-mcp",
+      "name": "Godot Editor MCP",
+      "kind": "mcp",
+      "tier": "core",
+      "sources": [
+        "S05",
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "完整编辑器闭环与上游 Toolset",
+      "integration": "固定服务端和 addon；原生 MCP 挂载；实际检验目录更新/图像/输入/保存。",
+      "licenseNote": "MIT；不随包复制上游实现",
+      "runtimeStatus": "NOT_RUN",
+      "candidateVersion": "2026.10.20.1",
+      "stateScope": "server-global-and-editor-global",
+      "enableRequires": "explicit-valid-project-and-launcher-configuration"
+    },
+    {
+      "id": "godot-cli",
+      "name": "Godot CLI",
+      "kind": "cli",
+      "tier": "core",
+      "sources": [
+        "S09"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "构建/导出/Headless 的官方路径",
+      "integration": "检测实际 4.7.2 help；使用已有绝对路径和有限墙钟 timeout。",
+      "licenseNote": "按选定版本 LICENSE/NOTICE 再核查",
+      "runtimeStatus": "NOT_RUN",
+      "candidateVersion": "4.7.2"
+    },
+    {
+      "id": "gdtoolkit",
+      "name": "GDScript Toolkit",
+      "kind": "cli",
+      "tier": "optional-basic",
+      "sources": [
+        "S12"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "轻量静态检查",
+      "integration": "必须实现允许开关和版本探测；先 check，格式化另审 diff。",
+      "licenseNote": "MIT",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "imagemagick",
+      "name": "ImageMagick",
+      "kind": "cli",
+      "tier": "optional-basic",
+      "sources": [
+        "S14"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "通用 2D 图像批处理",
+      "integration": "必须实现允许开关和探测；小样转码/尺寸/alpha 验证。",
+      "licenseNote": "ImageMagick License；按分发/构建核查，不统一写 MIT",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "ffmpeg",
+      "name": "FFmpeg / ffprobe",
+      "kind": "cli",
+      "tier": "optional-basic",
+      "sources": [
+        "S15"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "音频视频处理与元数据",
+      "integration": "必须实现允许开关和探测；小样 inspect/convert，不要求生成音乐。",
+      "licenseNote": "通常 LGPL，可启用 GPL/nonfree 组件；不随包打二进制",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "pixelorama",
+      "name": "Pixelorama",
+      "kind": "cli-and-gui",
+      "tier": "optional",
+      "sources": [
+        "S13"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "真正开源的像素资产工具",
+      "integration": "检测已安装程序；CLI export 以版本 help 为准，不做 GUI 自动绘画系统。",
+      "licenseNote": "MIT；素材另核查",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "gut",
+      "name": "GUT",
+      "kind": "project-addon",
+      "tier": "optional",
+      "sources": [
+        "S11"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "已有纯 GDScript 测试可复用",
+      "integration": "读取工程现有测试并执行；新安装单独确认；不同时强装另一框架。",
+      "licenseNote": "MIT",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "gdunit4",
+      "name": "GdUnit4 / GdUnit4Net",
+      "kind": "project-addon",
+      "tier": "optional",
+      "sources": [
+        "S10"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "场景/脚本/.NET 测试支持",
+      "integration": "按工程语言和上游矩阵选 release；正确使用 shell runner，不传给 godot -s。",
+      "licenseNote": "MIT",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "gua",
+      "name": "Gua",
+      "kind": "mcp-and-project-addon",
+      "tier": "optional",
+      "sources": [
+        "S18"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "需要更可靠语义交互时使用",
+      "integration": "用户已部署才接入；分开验证 native 库/引擎 addon/桥接/目标/输入释放。",
+      "licenseNote": "按实际选定发行 LICENSE 与 native 组件逐项核查",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "dcc-mcp",
+      "name": "DCC-MCP",
+      "kind": "mcp-or-cli-gateway",
+      "tier": "optional",
+      "sources": [
+        "S19"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "创作工具可按需发现，无需我们包装每个应用",
+      "integration": "复用已配置服务；不批量安装 adapter，不绕过允许列表。",
+      "licenseNote": "core MIT；各 adapter/宿主/服务许可与收费分别核查",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "tiled",
+      "name": "Tiled",
+      "kind": "cli-and-project-data",
+      "tier": "optional",
+      "sources": [
+        "S16"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "已有外部地图工作流继续使用",
+      "integration": "编辑/导出与 Godot importer 分别验证；不迁移现有 TileMap。",
+      "licenseNote": "GPL 系列，以目标版本 LICENSE 核查；地图素材许可独立",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "ldtk",
+      "name": "LDtk",
+      "kind": "gui-and-project-data",
+      "tier": "optional",
+      "sources": [
+        "S17"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "已有关卡数据可延续",
+      "integration": "导入器是独立兼容点，不假定完整 MCP；未测不显示 ready。",
+      "licenseNote": "以目标版本 LICENSE 核查",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "godot-ci",
+      "name": "godot-ci",
+      "kind": "ci-template",
+      "tier": "reference",
+      "sources": [
+        "S20"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "发布时参考现成模板",
+      "integration": "不变成本机常驻工具，不自动发布/写 secrets。",
+      "licenseNote": "按选定版本 LICENSE/NOTICE 再核查",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "official-demos",
+      "name": "Godot Demo Projects",
+      "kind": "reference-project",
+      "tier": "reference",
+      "sources": [
+        "S22"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "避免重复设计基础实现",
+      "integration": "只读查阅/复制经许可小例，选择目标版本；不是重写工程模板。",
+      "licenseNote": "代码及个别素材许可分别保留",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "dialogue-manager",
+      "name": "Dialogue Manager",
+      "kind": "project-addon",
+      "tier": "reference",
+      "sources": [
+        "S23"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "需要对话时复用",
+      "integration": "用户确认新依赖后再实施，不是默认 MCP。",
+      "licenseNote": "MIT；所含素材另核查",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "statecharts",
+      "name": "Godot State Charts",
+      "kind": "project-addon",
+      "tier": "reference",
+      "sources": [
+        "S24"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "复杂状态组织的可选复用",
+      "integration": "保留项目原有状态机制，不因存在插件就重构。",
+      "licenseNote": "代码/示例素材许可分别核查",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "limboai",
+      "name": "LimboAI",
+      "kind": "project-addon",
+      "tier": "reference",
+      "sources": [
+        "S25"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "复杂 AI 的可选复用",
+      "integration": "GDExtension 与 engine module 版本/平台有区别；不要默认编译引擎。",
+      "licenseNote": "MIT-style code；logo/demo art 为 CC-BY 等独立许可",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "dsh-mcp-manager",
+      "name": "@guowenzhang/dsh-mcp-manager",
+      "kind": "host-plugin",
+      "tier": "reference",
+      "sources": [
+        "S21"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "管理器参考/已有用户环境复用",
+      "integration": "不强依赖、不 fork 为主任务；不得双挂同 server。",
+      "licenseNote": "Apache-2.0 与其 NOTICE 中 MIT 部分",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "godot-ai-mcp",
+      "name": "Godot AI MCP (lightweight)",
+      "kind": "mcp",
+      "tier": "candidate",
+      "sources": [
+        "S27"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "小工具面备选",
+      "integration": "不要求首版同时适配；未测不可在 UI 伪装可用。",
+      "licenseNote": "MIT",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "godot-dotnet-mcp",
+      "name": "Godot .NET MCP",
+      "kind": "mcp",
+      "tier": "candidate",
+      "sources": [
+        "S28"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": ".NET 项目有原生编辑器桥接选择",
+      "integration": "不改变通用版默认；保留 .NET 依赖和版本条件。",
+      "licenseNote": "MIT",
+      "runtimeStatus": "NOT_RUN"
+    },
+    {
+      "id": "dsh-godot-ai-reference",
+      "name": "dsh-godot-ai",
+      "kind": "host-plugin",
+      "tier": "reference",
+      "sources": [
+        "S29"
+      ],
+      "defaultEnabled": false,
+      "selectionReason": "原生 preset/Skill 挂载参考",
+      "integration": "不整体依赖单角色 PTC/市场，不引入它自己的市场。",
+      "licenseNote": "MIT；复用片段需保留 notices",
+      "runtimeStatus": "NOT_RUN"
+    }
+  ]
+}

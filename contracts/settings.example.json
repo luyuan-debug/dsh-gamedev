@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "enabled": false,
+  "projectRoot": null,
+  "godotExecutable": null,
+  "bridge": {
+    "id": "godot-editor-mcp",
+    "mode": "stdio",
+    "executable": null,
+    "endpoint": null,
+    "bridgeUrl": null,
+    "bridgeSecretRef": null,
+    "httpSecretRef": null
+  },
+  "allowedOptionalTools": [],
+  "testFrameworkPreference": "existing"
+}

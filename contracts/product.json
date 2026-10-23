@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "handoffVersion": "1.0.0",
+  "targetPluginVersion": "0.2.0",
+  "projectName": "dsh-gamedev",
+  "preset": {
+    "id": "godot-2d",
+    "displayName": "Godot 2D",
+    "count": 1,
+    "prompt": "prompts/godot-2d.md"
+  },
+  "ownedSkill": {
+    "id": "godot-2d-workflow",
+    "count": 1,
+    "path": "skills/godot-2d-workflow/SKILL.md"
+  },
+  "newModelCallableTools": [],
+  "defaultBridge": "godot-editor-mcp",
+  "firstCandidate": {
+    "dsh": "0.2.1-rc.2",
+    "godot": "4.7.2",
+    "bridgeRelease": "2026.10.20.1",
+    "verificationReference": "docs/VERIFICATION.md"
+  },
+  "platformTargets": {
+    "primary": "macos-arm64",
+    "secondary": "linux-x64",
+    "supportPolicy": "See docs/VERIFICATION.md for measured support; target declarations are not acceptance evidence."
+  },
+  "preserveLanguages": [
+    "GDScript",
+    "C#",
+    "C++"
+  ],
+  "defaults": {
+    "autoInstall": false,
+    "autoUpgrade": false,
+    "selfEscalation": false,
+    "autoPublish": false,
+    "bridgeEnabled": false,
+    "optionalToolsEnabled": false
+  },
+  "compatibilityScope": "coexistence-and-noninterference-not-deep-integration",
+  "requiredDeliverables": [
+    "source-archive",
+    "installable-tarball",
+    "minimal-settings-ui",
+    "prompt-and-one-skill",
+    "resolved-dependencies",
+    "real-godot-evidence",
+    "acceptance-results",
+    "install-uninstall-docs"
+  ],
+  "requiredFlows": [
+    "preset-with-native-engineering-tools",
+    "editor-read-write-save-reread",
+    "runtime-input-logs-image",
+    "existing-project-bug-regression",
+    "same-platform-debug-export"
+  ],
+  "excluded": [
+    "multi-role-team-platform",
+    "new-task-board",
+    "capability-router",
+    "custom-mcp-transport",
+    "custom-mcp-search",
+    "own-memory-database",
+    "project-thread-owner",
+    "agent-team-owner",
+    "nested-team-in-project",
+    "automatic-tool-installation",
+    "automatic-permission-expansion",
+    "upstream-dsh-fork",
+    "mandatory-third-party-mcp-manager"
+  ],
+  "evidenceStatuses": [
+    "NOT_RUN",
+    "PASS",
+    "FAIL",
+    "BLOCKED",
+    "NOT_APPLICABLE"
+  ],
+  "sourceLedger": "resolved-dependencies.json",
+  "acceptanceMatrix": "acceptance/cases.json"
+}

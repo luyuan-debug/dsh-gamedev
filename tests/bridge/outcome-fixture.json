@@ -1,0 +1,9 @@
+{
+  "isError": true,
+  "content": [
+    {
+      "type": "text",
+      "text": "TIMEOUT: Original upstream hint.\n[bridge_outcome={\"fields\":{\"completed\":2,\"failed_count\":1,\"may_have_applied\":true,\"partial\":true,\"persisted\":false,\"rollback\":\"failed\"},\"omitted_fields\":[\"applied\"]}] [required=edited_scene]"
+    }
+  ]
+}
