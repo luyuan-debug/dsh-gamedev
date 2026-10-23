@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "package": "dsh-gamedev",
+  "version": "0.2.0",
+  "scope": "Selected actual report summaries; raw private evidence is delivered locally. No overall business acceptance is inferred.",
+  "artifact": {
+    "npmPackageSHA256": "00689ce92d4e60be88f3addf486d11c4d4bc4150616e435af683c1a1952c73c2",
+    "productionSourceFingerprint": "3600f2fc25f6cd7e1f430d4f8c79fa69800cbb964b116130941b429e244cd321",
+    "reviewedSourceManifestSHA256": "37eb3d9edd94c18b8d33c561be18f30bc1a8e83f6a337034d2337b4415d6497c"
+  },
+  "environment": {
+    "platform": "macOS arm64",
+    "dsh": "0.2.1-rc.2",
+    "godot": "4.7.2.stable.mono.official.ed1daf0bf",
+    "python": "3.14.7",
+    "node": "24.21.0",
+    "dotnet": "10.0.302"
+  },
+  "reports": [
+    {
+      "id": "source-unit",
+      "kind": "node-tap",
+      "reportSHA256": "1b242f2d5e3b4c449732e104fee23533e0a1211eae6d20df6f0cb5aebb4b306d",
+      "status": "PASS",
+      "counts": {
+        "tests": 112,
+        "pass": 112,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "artifactBinding": {
+        "status": "NOT_RECORDED"
+      }
+    },
+    {
+      "id": "bridge-protocol",
+      "kind": "unittest-text",
+      "reportSHA256": "7c1c178a72a500f97a5f56de5f81948b18191ae8c145e79c2ceb7506daca593e",
+      "status": "PASS",
+      "counts": {
+        "tests": 25,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0,
+        "passed": 25
+      },
+      "artifactBinding": {
+        "status": "NOT_RECORDED"
+      }
+    },
+    {
+      "id": "publication-regressions",
+      "kind": "unittest-text",
+      "reportSHA256": "446f279144dc7b2afb0b3345fd97e58eb38614f11ffaad5e380069126c4cf72f",
+      "status": "PASS",
+      "counts": {
+        "tests": 10,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0,
+        "passed": 10
+      },
+      "artifactBinding": {
+        "status": "NOT_RECORDED"
+      }
+    },
+    {
+      "id": "package-contract",
+      "kind": "contracts",
+      "reportSHA256": "b48106fa4133b30ceb6ecdd7de2eb2e462bcf4288393003e8f80babfb570d2da",
+      "status": "PASS",
+      "counts": {
+        "PASS": 59
+      },
+      "artifactBinding": {
+        "npmPackageSHA256": "00689ce92d4e60be88f3addf486d11c4d4bc4150616e435af683c1a1952c73c2"
+      }
+    },
+    {
+      "id": "native-lifecycle",
+      "kind": "native-public",
+      "reportSHA256": "2bee2a6ee3319962ad666ac8996453fea916f8c5810544a36563d107a0d65758",
+      "status": "PASS",
+      "counts": {
+        "PASS": 13
+      },
+      "cases": [
+        {
+          "id": "ordinary-scope-no-bridge",
+          "status": "PASS"
+        },
+        {
+          "id": "blank-ui-preset-select",
+          "status": "PASS"
+        },
+        {
+          "id": "single-preset-native-inventory",
+          "status": "PASS"
+        },
+        {
+          "id": "owner-dispose-new-agent-race",
+          "status": "PASS"
+        },
+        {
+          "id": "same-id-exact-agent-identity",
+          "status": "PASS"
+        },
+        {
+          "id": "settings-disable-revoke-release-reenable",
+          "status": "PASS"
+        },
+        {
+          "id": "repeated-disable-enable-real-editor",
+          "status": "PASS"
+        },
+        {
+          "id": "native-hmr-disable-enable-new-generation",
+          "status": "PASS"
+        },
+        {
+          "id": "formal-bridge-crash-recovery-no-write-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "occupied-port-no-foreign-kill",
+          "status": "PASS"
+        },
+        {
+          "id": "startup-revoked-before-activation",
+          "status": "PASS"
+        },
+        {
+          "id": "startup-revoked-while-connecting",
+          "status": "PASS"
+        },
+        {
+          "id": "final-owned-resources-zero",
+          "status": "PASS"
+        }
+      ],
+      "actualGodotEditor": true,
+      "repeatedDisableEnableCycles": 20,
+      "nativeInventory": {
+        "ownedPresetCount": 1,
+        "ownedSkillCount": 1,
+        "engineeringCount": 16,
+        "engineering": [
+          "ask_user_question",
+          "bash",
+          "edit",
+          "glob",
+          "grep",
+          "job_kill",
+          "job_list",
+          "job_output",
+          "present",
+          "read",
+          "read_image",
+          "skill",
+          "web_fetch",
+          "web_search",
+          "working_directory",
+          "write"
+        ],
+        "nativeResourceTools": [
+          "list_mcp_resource_templates",
+          "list_mcp_resources",
+          "read_mcp_resource"
+        ],
+        "newBusinessToolCount": 0,
+        "delegationToolCount": 0
+      },
+      "cleanup": {
+        "dedicatedPortsReleased": true
+      },
+      "modelRequests": 0,
+      "artifactBinding": {
+        "npmPackageSHA256": "00689ce92d4e60be88f3addf486d11c4d4bc4150616e435af683c1a1952c73c2",
+        "productionSourceFingerprint": "3600f2fc25f6cd7e1f430d4f8c79fa69800cbb964b116130941b429e244cd321"
+      }
+    },
+    {
+      "id": "isolated-installer",
+      "kind": "installer-cases",
+      "reportSHA256": "d26bc43a4ffb5bd490b0cf8f569763003314af003674ab07ab58b125dbf0873a",
+      "status": "PASS",
+      "counts": {
+        "PASS": 4
+      },
+      "actualLaunchStopCycles": 2,
+      "preservation": {
+        "projectBytesUnchangedByUninstall": true,
+        "engineVenvHomeRetained": true,
+        "onlyOwnedOverrideRemoved": true
+      },
+      "artifactBinding": {
+        "npmPackageSHA256": "00689ce92d4e60be88f3addf486d11c4d4bc4150616e435af683c1a1952c73c2",
+        "productionSourceFingerprint": "3600f2fc25f6cd7e1f430d4f8c79fa69800cbb964b116130941b429e244cd321"
+      }
+    },
+    {
+      "id": "real-model-incremental",
+      "kind": "model-public",
+      "reportSHA256": "6b5da95cd4e66ae7e4d9d8d378ced67d8a1395cdb34b38dd68d32f0350840bc3",
+      "status": "PASS",
+      "scope": "One real-model incremental edit in a copied task-owned GDScript fixture; no new from-scratch, visual, audio or export claim.",
+      "completedModelTurns": 1,
+      "toolCalls": 20,
+      "actualEngineAssertionCounts": [
+        47,
+        47,
+        10,
+        10
+      ],
+      "fullHostRestartVerified": true,
+      "preservedExistingTestsAddonAndUserMarker": true,
+      "change": {
+        "pointsPerStarBefore": 1,
+        "pointsPerStarAfter": 2,
+        "maximumScore": 12
+      },
+      "observedNonessentialAttemptCount": 0,
+      "artifactBinding": {
+        "npmPackageSHA256": "00689ce92d4e60be88f3addf486d11c4d4bc4150616e435af683c1a1952c73c2",
+        "productionSourceFingerprint": "3600f2fc25f6cd7e1f430d4f8c79fa69800cbb964b116130941b429e244cd321"
+      }
+    },
+    {
+      "id": "optional-csharp-baseline",
+      "kind": "command-results",
+      "reportSHA256": "a6ff47d28d322f1285fb3fb483d1be8be6c50158b7b88a0a2d2feb338e54a9d8",
+      "status": "PASS",
+      "counts": {
+        "PASS": 2
+      },
+      "checks": [
+        {
+          "id": "build",
+          "status": "PASS",
+          "exitCode": 0
+        },
+        {
+          "id": "runtime",
+          "status": "PASS",
+          "exitCode": 0,
+          "assertions": {
+            "recorded": 10,
+            "ids": [
+              "engine_version_interop",
+              "managed_scene_instantiated",
+              "exported_property_default",
+              "native_node2d_property_roundtrip",
+              "generated_signal_roundtrip",
+              "managed_child_native_lookup",
+              "variant_metadata_roundtrip",
+              "isolated_user_data_namespace",
+              "deferred_native_child_deletion",
+              "managed_process_callback"
+            ],
+            "passMarker": true
+          }
+        }
+      ],
+      "limitation": "Exit codes alone do not establish GUI, parsing, model or game assertions.",
+      "artifactBinding": {
+        "status": "NOT_RECORDED"
+      }
+    },
+    {
+      "id": "clean-reproducible-build",
+      "kind": "repro-build",
+      "reportSHA256": "9d33f30d0a612f2c169660253b7068f2bdfabf13f6247ce84931efe4c14e03c5",
+      "status": "PASS",
+      "cleanLockedBuildTools": true,
+      "identicalTarball": true,
+      "artifactBinding": {
+        "npmPackageSHA256": "00689ce92d4e60be88f3addf486d11c4d4bc4150616e435af683c1a1952c73c2"
+      }
+    },
+    {
+      "id": "original-engine-preservation",
+      "kind": "preservation",
+      "reportSHA256": "78a19d777e36441e57a8fea91784f42fa26c426e6846712dc2a774ff31452622",
+      "status": "PASS",
+      "originalGodotMainSHA256": "b57152bfab17c9e7bc6ecccd9096ede39b64d65f1edc1257f0cd6a24a68062a9",
+      "matchesBeforeTask": true,
+      "scope": "Original user Godot main executable hash only; no blanket whole-machine preservation inference.",
+      "artifactBinding": {
+        "status": "NOT_RECORDED"
+      }
+    },
+    {
+      "id": "native-engineering-execution",
+      "kind": "native-engineering",
+      "reportSHA256": "837008a477bed371e74e22689021eaa10c136b7738046e3e1881a345fc9276c1",
+      "status": "PASS",
+      "executedCapabilityClasses": [
+        "edit",
+        "read",
+        "search",
+        "skill",
+        "terminal"
+      ],
+      "executedNativeCallCount": 6,
+      "executedToolCounts": {
+        "bash": 1,
+        "edit": 1,
+        "grep": 1,
+        "read": 2,
+        "skill": 1
+      },
+      "availableEngineeringToolCount": 16,
+      "ownedPresetCount": 1,
+      "ownedSkillCount": 1,
+      "newModelCallableToolCount": 0,
+      "ownedResourcesReleased": true,
+      "artifactBinding": {
+        "npmPackageSHA256": "00689ce92d4e60be88f3addf486d11c4d4bc4150616e435af683c1a1952c73c2",
+        "productionSourceFingerprint": "3600f2fc25f6cd7e1f430d4f8c79fa69800cbb964b116130941b429e244cd321"
+      }
+    }
+  ],
+  "limitations": [
+    "Support verified here is macOS arm64 with the exact DSH/Godot/bridge versions recorded above; pure Linux source CI does not establish a second native engine platform.",
+    "The original 49 cases and 38 core requirements remain the baseline. This release reports actual focused lifecycle, installation and incremental-development checks; it does not inherit all 0.1.0 PASS results.",
+    "The model evidence covers one authorized incremental GDScript edit, four actual engine runs and full Host restart. It makes no new from-scratch game, visual-model, audio or export acceptance claim.",
+    "The optional C# evidence is a separate offline compile/engine baseline with 10 explicit runtime assertions, not a full C# Agent development or C++ workflow acceptance.",
+    "HTTP remains unavailable because the current native SDK cannot constrain every redirect to loopback. Missing optional CLI/DCC tools do not block unrelated core work.",
+    "Real engine acceptance used an isolated Godot copy; signing provenance is recorded separately in resolved-dependencies.json. This does not certify a vendor-signed/notarized engine distribution.",
+    "Raw sessions, local credential overlays, original games, private Profile paths and complete logs are excluded from the public source and assets.",
+    "Source-only reports without recorded candidate metadata are explicitly marked NOT_RECORDED, not silently bound to this tarball.",
+    "Test PASS does not imply native lifecycle, engine, GUI, model, audio or export acceptance outside that report scope.",
+    "Heuristic public scanning plus file-manifest review does not prove arbitrary text contains no private data."
+  ]
+}

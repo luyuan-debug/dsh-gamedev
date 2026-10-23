@@ -1,0 +1,5980 @@
+{
+  "version": "2026.10.20.1",
+  "tools": [
+    {
+      "name": "godot_health_check",
+      "handler": "health_check",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_undo",
+      "handler": "undo",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "default": 1,
+            "type": "integer"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_redo",
+      "handler": "redo",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "default": 1,
+            "type": "integer"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_list_history",
+      "handler": "list_history",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_describe_class",
+      "handler": "describe_class",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "class_name": {
+            "type": "string"
+          },
+          "include_inherited": {
+            "default": false,
+            "type": "boolean"
+          },
+          "include_private": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "class_name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_get_project_info",
+      "handler": "get_project_info",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_get_active_scene",
+      "handler": "get_active_scene",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_list_scenes",
+      "handler": "list_scenes",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_get_scene_tree",
+      "handler": "get_scene_tree",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "max_depth": {
+            "default": -1,
+            "maximum": 1000,
+            "minimum": -1,
+            "type": "integer"
+          },
+          "lightweight": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_get_selected_node",
+      "handler": "get_selected_node",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_get_node_properties",
+      "handler": "get_node_properties",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_get_node_property",
+      "handler": "get_node_property",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "property": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path",
+          "property"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_get_node_property_list",
+      "handler": "get_node_property_list",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_get_node_groups",
+      "handler": "get_node_groups",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_snapshot_subtree",
+      "handler": "snapshot_subtree",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "default": ".",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "max_depth": {
+            "default": -1,
+            "maximum": 1000,
+            "minimum": -1,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_inspection_diff_snapshots",
+      "handler": "diff_snapshots",
+      "tags": [
+        "inspection"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "before_id": {
+            "type": "string"
+          },
+          "after_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "node_path": {
+            "default": ".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "before_id"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_create_node",
+      "handler": "create_node",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "node_type": {
+            "type": "string"
+          },
+          "node_name": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path",
+          "node_type",
+          "node_name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_rename_node",
+      "handler": "rename_node",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "new_name": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "new_name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_set_node_property",
+      "handler": "set_node_property",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "property": {
+            "type": "string"
+          },
+          "value": {},
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "property",
+          "value"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_delete_node",
+      "handler": "delete_node",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_attach_script",
+      "handler": "attach_script",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "script_path": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "script_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_connect_signal",
+      "handler": "connect_signal",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "source_path": {
+            "type": "string"
+          },
+          "signal_name": {
+            "type": "string"
+          },
+          "target_path": {
+            "type": "string"
+          },
+          "method_name": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source_path",
+          "signal_name",
+          "target_path",
+          "method_name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_save_scene",
+      "handler": "save_scene",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_create_scene",
+      "handler": "create_scene",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "root_type": {
+            "type": "string"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "root_type",
+          "scene_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_instance_scene",
+      "handler": "instance_scene",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "name": {
+            "default": "",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path",
+          "scene_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_extract_scene",
+      "handler": "extract_scene",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "replace_with_instance": {
+            "default": false,
+            "type": "boolean"
+          },
+          "save_current": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "scene_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_set_editable_children",
+      "handler": "set_editable_children",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "editable": {
+            "default": true,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_open_scene",
+      "handler": "open_scene",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scene_path": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "scene_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_reload_scene",
+      "handler": "reload_scene",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scene_path": {
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "scene_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_rescan_filesystem",
+      "handler": "rescan_filesystem",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_close_scene",
+      "handler": "close_scene",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scene_path": {
+            "default": "",
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_save_all_scenes",
+      "handler": "save_all_scenes",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_list_open_scenes",
+      "handler": "list_open_scenes",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_select_nodes",
+      "handler": "select_nodes",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_paths": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_paths"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_duplicate_node",
+      "handler": "duplicate_node",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_move_node",
+      "handler": "move_node",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "new_parent_path": {
+            "type": "string"
+          },
+          "index": {
+            "default": -1,
+            "type": "integer"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "new_parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_add_to_group",
+      "handler": "add_to_group",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "group"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_remove_from_group",
+      "handler": "remove_from_group",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "group"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_list_signal_connections",
+      "handler": "list_signal_connections",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_edit_disconnect_signal",
+      "handler": "disconnect_signal",
+      "tags": [
+        "scene_edit"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "source_path": {
+            "type": "string"
+          },
+          "signal_name": {
+            "type": "string"
+          },
+          "target_path": {
+            "type": "string"
+          },
+          "method_name": {
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source_path",
+          "signal_name",
+          "target_path",
+          "method_name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_resources_edit_read_resource_file",
+      "handler": "read_resource_file",
+      "tags": [
+        "resources_edit"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "resource_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_resources_edit_create_resource",
+      "handler": "create_resource",
+      "tags": [
+        "resources_edit"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "resource_path": {
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "type",
+          "resource_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_resources_edit_set_resource_property",
+      "handler": "set_resource_property",
+      "tags": [
+        "resources_edit"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "resource_path": {
+            "type": "string"
+          },
+          "property": {
+            "type": "string"
+          },
+          "value": {},
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "resource_path",
+          "property",
+          "value"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_resources_edit_register_autoload",
+      "handler": "register_autoload",
+      "tags": [
+        "resources_edit"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_resources_edit_unregister_autoload",
+      "handler": "unregister_autoload",
+      "tags": [
+        "resources_edit"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_project_get_filesystem_tree",
+      "handler": "get_filesystem_tree",
+      "tags": [
+        "project"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "directory": {
+            "default": "res://",
+            "type": "string"
+          },
+          "max_depth": {
+            "default": -1,
+            "maximum": 1000,
+            "minimum": -1,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_project_search_files",
+      "handler": "search_files",
+      "tags": [
+        "project"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "directory": {
+            "default": "res://",
+            "type": "string"
+          },
+          "name_glob": {
+            "default": "",
+            "type": "string"
+          },
+          "content": {
+            "default": "",
+            "type": "string"
+          },
+          "max_results": {
+            "default": 200,
+            "maximum": 10000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_project_get_setting",
+      "handler": "get_setting",
+      "tags": [
+        "project"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_project_set_setting",
+      "handler": "set_setting",
+      "tags": [
+        "project"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {},
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "value"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_project_resolve_uid",
+      "handler": "resolve_uid",
+      "tags": [
+        "project"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_project_delete_resource_file",
+      "handler": "delete_resource_file",
+      "tags": [
+        "project"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_project_move_file",
+      "handler": "move_resource_file",
+      "tags": [
+        "project"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "new_path": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path",
+          "new_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_physics_setup_body",
+      "handler": "setup_physics_body",
+      "tags": [
+        "physics"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "properties"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_physics_setup_collision",
+      "handler": "setup_collision",
+      "tags": [
+        "physics"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "shape_type": {
+            "type": "string"
+          },
+          "collision_node_type": {
+            "default": "CollisionShape2D",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "shape_type"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_physics_set_layers",
+      "handler": "set_physics_layers",
+      "tags": [
+        "physics"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "layers": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "mask": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_physics_add_raycast",
+      "handler": "add_raycast",
+      "tags": [
+        "physics"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "name": {
+            "default": "RayCast",
+            "type": "string"
+          },
+          "raycast_type": {
+            "default": "RayCast2D",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_animation_create",
+      "handler": "create_animation",
+      "tags": [
+        "animation"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "length": {
+            "default": 1.0,
+            "type": "number"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_animation_add_track",
+      "handler": "add_animation_track",
+      "tags": [
+        "animation"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "animation": {
+            "type": "string"
+          },
+          "track_path": {
+            "type": "string"
+          },
+          "track_type": {
+            "default": "value",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "animation",
+          "track_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_animation_insert_keyframe",
+      "handler": "insert_keyframe",
+      "tags": [
+        "animation"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "animation": {
+            "type": "string"
+          },
+          "track": {
+            "type": "integer"
+          },
+          "time": {
+            "type": "number"
+          },
+          "value": {},
+          "easing": {
+            "default": 1.0,
+            "type": "number"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "animation",
+          "track",
+          "time",
+          "value"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_animation_create_tree",
+      "handler": "create_animation_tree",
+      "tags": [
+        "animation"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "name": {
+            "default": "AnimationTree",
+            "type": "string"
+          },
+          "anim_player": {
+            "default": "",
+            "type": "string"
+          },
+          "root_type": {
+            "default": "AnimationNodeStateMachine",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_animation_add_state_machine_state",
+      "handler": "add_state_machine_state",
+      "tags": [
+        "animation"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "tree_path": {
+            "type": "string"
+          },
+          "state_name": {
+            "type": "string"
+          },
+          "animation": {
+            "default": "",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "tree_path",
+          "state_name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_animation_set_blend_tree_node",
+      "handler": "set_blend_tree_node",
+      "tags": [
+        "animation"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "tree_path": {
+            "type": "string"
+          },
+          "node_name": {
+            "type": "string"
+          },
+          "node_type": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "tree_path",
+          "node_name",
+          "node_type"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_animation_list_animations",
+      "handler": "list_animations",
+      "tags": [
+        "animation"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_animation_get",
+      "handler": "get_animation",
+      "tags": [
+        "animation"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "animation_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path",
+          "animation_name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_3d_add_mesh_instance",
+      "handler": "add_mesh_instance",
+      "tags": [
+        "scene_3d"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "mesh_type": {
+            "default": "BoxMesh",
+            "type": "string"
+          },
+          "name": {
+            "default": "MeshInstance3D",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_3d_setup_camera",
+      "handler": "setup_camera",
+      "tags": [
+        "scene_3d"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "name": {
+            "default": "Camera3D",
+            "type": "string"
+          },
+          "make_current": {
+            "default": true,
+            "type": "boolean"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_3d_setup_lighting",
+      "handler": "setup_lighting",
+      "tags": [
+        "scene_3d"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "light_type": {
+            "default": "DirectionalLight3D",
+            "type": "string"
+          },
+          "name": {
+            "default": "",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_3d_setup_environment",
+      "handler": "setup_environment",
+      "tags": [
+        "scene_3d"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "name": {
+            "default": "WorldEnvironment",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_3d_gridmap_set_cell",
+      "handler": "gridmap_set_cell",
+      "tags": [
+        "scene_3d"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "position": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "item": {
+            "type": "integer"
+          },
+          "orientation": {
+            "default": 0,
+            "type": "integer"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "position",
+          "item"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_3d_gridmap_get_cell",
+      "handler": "gridmap_get_cell",
+      "tags": [
+        "scene_3d"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "position": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "node_path",
+          "position"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_3d_create_mesh_library",
+      "handler": "create_mesh_library",
+      "tags": [
+        "scene_3d"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "default": "",
+            "type": "string"
+          },
+          "save_path": {
+            "default": "",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scene_3d_add_mesh_library_item",
+      "handler": "add_mesh_library_item",
+      "tags": [
+        "scene_3d"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "default": "",
+            "type": "string"
+          },
+          "library_path": {
+            "default": "",
+            "type": "string"
+          },
+          "mesh_type": {
+            "default": "",
+            "type": "string"
+          },
+          "mesh_path": {
+            "default": "",
+            "type": "string"
+          },
+          "item_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "name": {
+            "default": "",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_particles_create",
+      "handler": "create_particles",
+      "tags": [
+        "particles"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "particles_type": {
+            "default": "GPUParticles2D",
+            "type": "string"
+          },
+          "name": {
+            "default": "",
+            "type": "string"
+          },
+          "amount": {
+            "default": 8,
+            "maximum": 1000000,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "lifetime": {
+            "default": 1.0,
+            "type": "number"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_particles_set_material",
+      "handler": "set_particle_material",
+      "tags": [
+        "particles"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "properties"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_particles_set_color_gradient",
+      "handler": "set_particle_color_gradient",
+      "tags": [
+        "particles"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "colors": {
+            "items": {},
+            "type": "array"
+          },
+          "offsets": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "colors"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_particles_apply_preset",
+      "handler": "apply_particle_preset",
+      "tags": [
+        "particles"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "preset": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "preset"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_particles_get_material",
+      "handler": "get_particle_material",
+      "tags": [
+        "particles"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_navigation_setup_region",
+      "handler": "setup_navigation_region",
+      "tags": [
+        "navigation"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "region_type": {
+            "default": "NavigationRegion2D",
+            "type": "string"
+          },
+          "name": {
+            "default": "",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_navigation_setup_agent",
+      "handler": "setup_navigation_agent",
+      "tags": [
+        "navigation"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "agent_type": {
+            "default": "NavigationAgent2D",
+            "type": "string"
+          },
+          "name": {
+            "default": "",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_navigation_bake_mesh",
+      "handler": "bake_navigation_mesh",
+      "tags": [
+        "navigation"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_navigation_set_layers",
+      "handler": "set_navigation_layers",
+      "tags": [
+        "navigation"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "layers": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "layers"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_navigation_get_region",
+      "handler": "get_navigation_region",
+      "tags": [
+        "navigation"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_audio_add_player",
+      "handler": "add_audio_player",
+      "tags": [
+        "audio"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "player_type": {
+            "default": "AudioStreamPlayer",
+            "type": "string"
+          },
+          "name": {
+            "default": "",
+            "type": "string"
+          },
+          "stream_path": {
+            "default": "",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_audio_get_bus_layout",
+      "handler": "get_audio_bus_layout",
+      "tags": [
+        "audio"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_audio_add_bus",
+      "handler": "add_audio_bus",
+      "tags": [
+        "audio"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "volume_db": {
+            "default": 0.0,
+            "type": "number"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_audio_add_bus_effect",
+      "handler": "add_audio_bus_effect",
+      "tags": [
+        "audio"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "bus": {
+            "type": "string"
+          },
+          "effect_type": {
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "bus",
+          "effect_type"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_audio_remove_bus",
+      "handler": "remove_audio_bus",
+      "tags": [
+        "audio"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "bus": {
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "bus"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_audio_remove_bus_effect",
+      "handler": "remove_audio_bus_effect",
+      "tags": [
+        "audio"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "bus": {
+            "type": "string"
+          },
+          "effect_index": {
+            "type": "integer"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "bus",
+          "effect_index"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_tilemap_set_cell",
+      "handler": "tilemap_set_cell",
+      "tags": [
+        "tilemap"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "coords": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "source_id": {
+            "default": -1,
+            "minimum": -1,
+            "type": "integer"
+          },
+          "atlas_coords": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "alternative_tile": {
+            "default": 0,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "layer": {
+            "default": 0,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "coords"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_tilemap_fill_rect",
+      "handler": "tilemap_fill_rect",
+      "tags": [
+        "tilemap"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "rect": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "source_id": {
+            "default": -1,
+            "minimum": -1,
+            "type": "integer"
+          },
+          "atlas_coords": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "alternative_tile": {
+            "default": 0,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "layer": {
+            "default": 0,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "rect"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_tilemap_get_cell",
+      "handler": "tilemap_get_cell",
+      "tags": [
+        "tilemap"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "coords": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "layer": {
+            "default": 0,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "node_path",
+          "coords"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_tilemap_get_used_cells",
+      "handler": "tilemap_get_used_cells",
+      "tags": [
+        "tilemap"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "layer": {
+            "default": 0,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_tilemap_clear",
+      "handler": "tilemap_clear",
+      "tags": [
+        "tilemap"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "layer": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_tilemap_layers",
+      "handler": "tilemap_layers",
+      "tags": [
+        "tilemap"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_tilemap_create_tileset",
+      "handler": "create_tileset",
+      "tags": [
+        "tilemap"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "default": "",
+            "type": "string"
+          },
+          "save_path": {
+            "default": "",
+            "type": "string"
+          },
+          "tile_size": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_tilemap_add_tileset_atlas_source",
+      "handler": "add_tileset_atlas_source",
+      "tags": [
+        "tilemap"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "texture_path": {
+            "type": "string"
+          },
+          "region_size": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "node_path": {
+            "default": "",
+            "type": "string"
+          },
+          "tileset_path": {
+            "default": "",
+            "type": "string"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "minimum": -1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "texture_path",
+          "region_size"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_tilemap_create_tile",
+      "handler": "create_tile",
+      "tags": [
+        "tilemap"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "source_id": {
+            "minimum": -1,
+            "type": "integer"
+          },
+          "atlas_coords": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "node_path": {
+            "default": "",
+            "type": "string"
+          },
+          "tileset_path": {
+            "default": "",
+            "type": "string"
+          },
+          "size": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source_id",
+          "atlas_coords"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_theme_ui_create",
+      "handler": "create_theme",
+      "tags": [
+        "theme_ui"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "save_path": {
+            "default": "",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_theme_ui_set_color",
+      "handler": "set_theme_color",
+      "tags": [
+        "theme_ui"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "color": {},
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "name",
+          "color"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_theme_ui_set_font_size",
+      "handler": "set_theme_font_size",
+      "tags": [
+        "theme_ui"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "name",
+          "size"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_theme_ui_set_stylebox",
+      "handler": "set_theme_stylebox",
+      "tags": [
+        "theme_ui"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "stylebox_type": {
+            "default": "StyleBoxFlat",
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_theme_ui_get_node_overrides",
+      "handler": "get_node_theme_overrides",
+      "tags": [
+        "theme_ui"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_shader_create",
+      "handler": "create_shader",
+      "tags": [
+        "shader"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "shader_path": {
+            "type": "string"
+          },
+          "code": {
+            "default": "shader_type canvas_item;\n\nvoid fragment() {\n\tCOLOR = vec4(1.0);\n}\n",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "shader_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_shader_assign_material",
+      "handler": "assign_shader_material",
+      "tags": [
+        "shader"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "shader_path": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "shader_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_shader_set_param",
+      "handler": "set_shader_param",
+      "tags": [
+        "shader"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "value": {},
+          "param_type": {
+            "default": "",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "node_path",
+          "name",
+          "value"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_shader_get_param",
+      "handler": "get_shader_param",
+      "tags": [
+        "shader"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_path",
+          "name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_shader_read",
+      "handler": "read_shader",
+      "tags": [
+        "shader"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "shader_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "shader_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_shader_validate",
+      "handler": "validate_shader",
+      "tags": [
+        "shader"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "shader_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "shader_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_visual_shader_create",
+      "handler": "create_visual_shader",
+      "tags": [
+        "visual_shader"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "default": "3d",
+            "type": "string"
+          },
+          "path": {
+            "default": "",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_visual_shader_add_node",
+      "handler": "add_shader_node",
+      "tags": [
+        "visual_shader"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "shader_path": {
+            "type": "string"
+          },
+          "node_type": {
+            "type": "string"
+          },
+          "node_id": {
+            "type": "integer"
+          },
+          "position": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "shader_path",
+          "node_type",
+          "node_id"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_visual_shader_connect_nodes",
+      "handler": "connect_shader_nodes",
+      "tags": [
+        "visual_shader"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "shader_path": {
+            "type": "string"
+          },
+          "from_node": {
+            "type": "integer"
+          },
+          "from_port": {
+            "type": "integer"
+          },
+          "to_node": {
+            "type": "integer"
+          },
+          "to_port": {
+            "type": "integer"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "shader_path",
+          "from_node",
+          "from_port",
+          "to_node",
+          "to_port"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_visual_shader_set_node_param",
+      "handler": "set_shader_node_param",
+      "tags": [
+        "visual_shader"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "shader_path": {
+            "type": "string"
+          },
+          "node_id": {
+            "type": "integer"
+          },
+          "property": {
+            "type": "string"
+          },
+          "value": {},
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "shader_path",
+          "node_id",
+          "property",
+          "value"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_visual_shader_list_node_types",
+      "handler": "list_shader_node_types",
+      "tags": [
+        "visual_shader"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_visual_shader_read",
+      "handler": "read_visual_shader",
+      "tags": [
+        "visual_shader"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "shader_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "shader_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_editor_capture_screenshot",
+      "handler": "capture_editor_screenshot",
+      "tags": [
+        "editor"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "timeout_ms": {
+            "default": 2000,
+            "maximum": 600000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_read_resource",
+      "handler": "read_resource",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "uri": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "uri"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_run_and_capture",
+      "handler": "run_and_capture",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scene": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "timeout_seconds": {
+            "default": 10.0,
+            "maximum": 3600.0,
+            "minimum": 0.1,
+            "type": "number"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_play_scene",
+      "handler": "play_scene",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scene_path": {
+            "default": "",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_stop_scene",
+      "handler": "stop_scene",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_is_playing",
+      "handler": "is_playing",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_get_game_scene_tree",
+      "handler": "get_game_scene_tree",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "timeout_ms": {
+            "default": 2000,
+            "maximum": 600000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_capture_game_screenshot",
+      "handler": "capture_game_screenshot",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "timeout_ms": {
+            "default": 2000,
+            "maximum": 600000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_get_game_output",
+      "handler": "get_game_output",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "since_seq": {
+            "default": 0,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_monitor_property",
+      "handler": "monitor_property",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "property": {
+            "type": "string"
+          },
+          "samples": {
+            "default": 30,
+            "maximum": 1000,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "on_change_only": {
+            "default": true,
+            "type": "boolean"
+          },
+          "epsilon": {
+            "default": 0.0001,
+            "type": "number"
+          }
+        },
+        "required": [
+          "node_path",
+          "property"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_get_property_samples",
+      "handler": "get_property_samples",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_read_property",
+      "handler": "read_property",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "property": {
+            "type": "string"
+          },
+          "timeout_ms": {
+            "default": 2000,
+            "maximum": 600000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "node_path",
+          "property"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_runtime_find_ui_elements",
+      "handler": "find_ui_elements",
+      "tags": [
+        "runtime"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "name_contains": {
+            "default": "",
+            "type": "string"
+          },
+          "class_filter": {
+            "default": "",
+            "type": "string"
+          },
+          "visible_only": {
+            "default": false,
+            "type": "boolean"
+          },
+          "timeout_ms": {
+            "default": 2000,
+            "maximum": 600000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_asset_import_asset",
+      "handler": "import_asset",
+      "tags": [
+        "asset_import"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "$defs": {
+          "ImportOptions": {
+            "description": "Structured options for ``import_asset`` (issue #691: a typed shape so the\nschema guides client generation instead of a bare ``object``).",
+            "properties": {
+              "overwrite": {
+                "default": false,
+                "type": "boolean"
+              },
+              "import_settings": {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "target_path": {
+            "type": "string"
+          },
+          "options": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/ImportOptions"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          },
+          "wait_for_scan": {
+            "default": false,
+            "type": "boolean"
+          },
+          "timeout_ms": {
+            "default": 5000,
+            "maximum": 600000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "source",
+          "target_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_asset_import_create_material_from_textures",
+      "handler": "create_material_from_textures",
+      "tags": [
+        "asset_import"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "albedo": {
+            "default": "",
+            "type": "string"
+          },
+          "normal": {
+            "default": "",
+            "type": "string"
+          },
+          "roughness": {
+            "default": "",
+            "type": "string"
+          },
+          "metallic": {
+            "default": "",
+            "type": "string"
+          },
+          "ao": {
+            "default": "",
+            "type": "string"
+          },
+          "emission": {
+            "default": "",
+            "type": "string"
+          },
+          "emission_enabled": {
+            "default": "",
+            "type": "string"
+          },
+          "path": {
+            "default": "",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_asset_import_get_status",
+      "handler": "get_import_status",
+      "tags": [
+        "asset_import"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "target_path": {
+            "type": "string"
+          },
+          "wait_ms": {
+            "default": 0,
+            "maximum": 600000,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "target_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_simulate_key",
+      "handler": "simulate_key",
+      "tags": [
+        "input"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "pressed": {
+            "default": true,
+            "type": "boolean"
+          },
+          "shift": {
+            "default": false,
+            "type": "boolean"
+          },
+          "ctrl": {
+            "default": false,
+            "type": "boolean"
+          },
+          "alt": {
+            "default": false,
+            "type": "boolean"
+          },
+          "meta": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "key"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_simulate_mouse",
+      "handler": "simulate_mouse",
+      "tags": [
+        "input"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "button": {
+            "default": "",
+            "type": "string"
+          },
+          "pressed": {
+            "default": true,
+            "type": "boolean"
+          },
+          "relative_x": {
+            "default": 0.0,
+            "type": "number"
+          },
+          "relative_y": {
+            "default": 0.0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_simulate_action",
+      "handler": "simulate_action",
+      "tags": [
+        "input"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "pressed": {
+            "default": true,
+            "type": "boolean"
+          },
+          "strength": {
+            "default": 1.0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_play_sequence",
+      "handler": "play_input_sequence",
+      "tags": [
+        "input"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "events": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "delay_ms": {
+            "default": 0,
+            "maximum": 600000,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "events"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_get_stats",
+      "handler": "get_input_stats",
+      "tags": [
+        "input"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_record",
+      "handler": "record_input",
+      "tags": [
+        "input"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "include_motion": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_stop_recording",
+      "handler": "stop_recording",
+      "tags": [
+        "input"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "timeout_ms": {
+            "default": 2000,
+            "maximum": 600000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_map_add_action",
+      "handler": "add_input_action",
+      "tags": [
+        "input_map"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "deadzone": {
+            "default": 0.5,
+            "type": "number"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_map_remove_action",
+      "handler": "remove_input_action",
+      "tags": [
+        "input_map"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_map_add_event",
+      "handler": "add_input_event",
+      "tags": [
+        "input_map"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "event_type": {
+            "type": "string"
+          },
+          "keycode": {
+            "default": "",
+            "type": "string"
+          },
+          "physical_keycode": {
+            "default": "",
+            "type": "string"
+          },
+          "shift": {
+            "default": false,
+            "type": "boolean"
+          },
+          "ctrl": {
+            "default": false,
+            "type": "boolean"
+          },
+          "alt": {
+            "default": false,
+            "type": "boolean"
+          },
+          "meta": {
+            "default": false,
+            "type": "boolean"
+          },
+          "button": {
+            "default": "",
+            "type": "string"
+          },
+          "device": {
+            "default": 0,
+            "type": "integer"
+          },
+          "axis": {
+            "default": -1,
+            "type": "integer"
+          },
+          "axis_value": {
+            "default": 1.0,
+            "type": "number"
+          },
+          "joy_button_index": {
+            "default": -1,
+            "type": "integer"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "action",
+          "event_type"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_map_clear_action_events",
+      "handler": "clear_input_action_events",
+      "tags": [
+        "input_map"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_input_map_get_action_events",
+      "handler": "get_input_action_events",
+      "tags": [
+        "input_map"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_testing_run_tests",
+      "handler": "run_tests",
+      "tags": [
+        "testing"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "test_dir": {
+            "default": "res://test",
+            "type": "string"
+          },
+          "timeout_seconds": {
+            "default": 120.0,
+            "maximum": 3600.0,
+            "minimum": 0.1,
+            "type": "number"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_testing_assert_node_state",
+      "handler": "assert_node_state",
+      "tags": [
+        "testing"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "type": "string"
+          },
+          "property": {
+            "type": "string"
+          },
+          "expected": {},
+          "op": {
+            "default": "==",
+            "type": "string"
+          },
+          "timeout_ms": {
+            "default": 1500,
+            "maximum": 600000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "node_path",
+          "property",
+          "expected"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_testing_run_test_scenario",
+      "handler": "run_test_scenario",
+      "tags": [
+        "testing"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scene": {
+            "default": "",
+            "type": "string"
+          },
+          "events": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "assertions": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "setup_ms": {
+            "default": 800,
+            "maximum": 600000,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "settle_ms": {
+            "default": 300,
+            "maximum": 600000,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "stop_after": {
+            "default": true,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_testing_run_stress_test",
+      "handler": "run_stress_test",
+      "tags": [
+        "testing"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "iterations": {
+            "default": 100,
+            "maximum": 2000,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "actions": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "seed": {
+            "default": 0,
+            "type": "integer"
+          },
+          "delay_ms": {
+            "default": 8,
+            "maximum": 600000,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_testing_compare_screenshots",
+      "handler": "compare_screenshots",
+      "tags": [
+        "testing"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "image_a": {
+            "type": "string"
+          },
+          "image_b": {
+            "type": "string"
+          },
+          "tolerance": {
+            "default": 0.0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "image_a",
+          "image_b"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_profiling_get_editor_performance",
+      "handler": "get_editor_performance",
+      "tags": [
+        "profiling"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_profiling_get_performance_monitors",
+      "handler": "get_performance_monitors",
+      "tags": [
+        "profiling"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "timeout_ms": {
+            "default": 2000,
+            "maximum": 600000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_batch_find_nodes_by_type",
+      "handler": "find_nodes_by_type",
+      "tags": [
+        "batch"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_type": {
+            "type": "string"
+          },
+          "parent_path": {
+            "default": ".",
+            "type": "string"
+          },
+          "recursive": {
+            "default": true,
+            "type": "boolean"
+          },
+          "offset": {
+            "default": 0,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "limit": {
+            "default": 200,
+            "maximum": 1000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "node_type"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_batch_set_property",
+      "handler": "batch_set_property",
+      "tags": [
+        "batch"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "property": {
+            "type": "string"
+          },
+          "value": {},
+          "node_paths": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "node_type": {
+            "default": "",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "property",
+          "value"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_batch_cross_scene_set_property",
+      "handler": "cross_scene_set_property",
+      "tags": [
+        "batch"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scenes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "node_type": {
+            "type": "string"
+          },
+          "property": {
+            "type": "string"
+          },
+          "value": {},
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "scenes",
+          "node_type",
+          "property",
+          "value"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_batch_get_dependencies",
+      "handler": "get_dependencies",
+      "tags": [
+        "batch"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_composite_compose_node",
+      "handler": "compose_node",
+      "tags": [
+        "composite"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "$defs": {
+          "ChildSpec": {
+            "description": "One child for ``compose_node`` (issue #691: a typed shape so the schema\nguides client generation instead of a bare ``object``).",
+            "properties": {
+              "node_type": {
+                "type": "string"
+              },
+              "node_name": {
+                "default": "",
+                "type": "string"
+              },
+              "properties": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "node_type"
+            ],
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "node_type": {
+            "type": "string"
+          },
+          "node_name": {
+            "type": "string"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "script_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "children": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/$defs/ChildSpec"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "save": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path",
+          "node_type",
+          "node_name"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_composite_batch_create_nodes",
+      "handler": "batch_create_nodes",
+      "tags": [
+        "composite"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_path": {
+            "type": "string"
+          },
+          "node_type": {
+            "type": "string"
+          },
+          "names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "properties": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "save": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "parent_path",
+          "node_type",
+          "names"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_composite_apply_node_edits",
+      "handler": "apply_node_edits",
+      "tags": [
+        "composite"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "$defs": {
+          "NodeEdit": {
+            "description": "One ``{node_path, properties}`` entry for ``apply_node_edits`` (issue #691).",
+            "properties": {
+              "node_path": {
+                "type": "string"
+              },
+              "properties": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "node_path"
+            ],
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "edits": {
+            "items": {
+              "$ref": "#/$defs/NodeEdit"
+            },
+            "type": "array"
+          },
+          "save": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "edits"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_composite_run_commands",
+      "handler": "run_commands",
+      "tags": [
+        "composite"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "$defs": {
+          "RunCommandEntry": {
+            "description": "One ``{command, params}`` entry of a ``run_commands`` batch (issue #691:\na typed shape so the schema guides client generation).",
+            "properties": {
+              "command": {
+                "type": "string"
+              },
+              "params": {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            },
+            "required": [
+              "command"
+            ],
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "commands": {
+            "items": {
+              "$ref": "#/$defs/RunCommandEntry"
+            },
+            "type": "array"
+          },
+          "stop_on_error": {
+            "default": true,
+            "type": "boolean"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "commands"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_set_breakpoint",
+      "handler": "set_breakpoint",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "line"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_remove_breakpoint",
+      "handler": "remove_breakpoint",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "line"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_clear_breakpoints",
+      "handler": "clear_breakpoints",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_force_break",
+      "handler": "force_break",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_step_into",
+      "handler": "step_into",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_step_over",
+      "handler": "step_over",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_step_out",
+      "handler": "step_out",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_continue_execution",
+      "handler": "continue_execution",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_get_stack_frames",
+      "handler": "get_stack_frames",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_evaluate_expression",
+      "handler": "evaluate_expression",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime",
+        "executes_code": "true"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "expression": {
+            "type": "string"
+          },
+          "timeout_ms": {
+            "default": 2000,
+            "maximum": 600000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "expression"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debugger_get_frame_variables",
+      "handler": "get_frame_variables",
+      "tags": [
+        "debugger"
+      ],
+      "meta": {
+        "safety_class": "runtime"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_analysis_find_unused_resources",
+      "handler": "find_unused_resources",
+      "tags": [
+        "analysis"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_analysis_analyze_signal_flow",
+      "handler": "analyze_signal_flow",
+      "tags": [
+        "analysis"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scene": {
+            "default": "",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_analysis_detect_circular_dependencies",
+      "handler": "detect_circular_dependencies",
+      "tags": [
+        "analysis"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_analysis_project_stats",
+      "handler": "project_stats",
+      "tags": [
+        "analysis"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_analysis_project_structure",
+      "handler": "project_structure",
+      "tags": [
+        "analysis"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_analysis_analyze_dependencies",
+      "handler": "analyze_dependencies",
+      "tags": [
+        "analysis"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "resource_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_analysis_find_orphaned_resources",
+      "handler": "find_orphaned_resources",
+      "tags": [
+        "analysis"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scan_dir": {
+            "default": "res://",
+            "type": "string"
+          },
+          "resource_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_analysis_validate_scene_integrity",
+      "handler": "validate_scene_integrity",
+      "tags": [
+        "analysis"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scene_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "scene_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_analysis_cross_scene_find_refs",
+      "handler": "cross_scene_find_refs",
+      "tags": [
+        "analysis"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "target_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "target_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_export_list_presets",
+      "handler": "list_export_presets",
+      "tags": [
+        "export"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_export_get_info",
+      "handler": "get_export_info",
+      "tags": [
+        "export"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_export_project",
+      "handler": "export_project",
+      "tags": [
+        "export"
+      ],
+      "meta": {
+        "safety_class": "runtime",
+        "writes_disk": "true"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "preset": {
+            "type": "string"
+          },
+          "output_path": {
+            "type": "string"
+          },
+          "debug": {
+            "default": false,
+            "type": "boolean"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "timeout_seconds": {
+            "default": 300.0,
+            "maximum": 3600.0,
+            "minimum": 0.1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "preset",
+          "output_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scripts_read",
+      "handler": "read_script",
+      "tags": [
+        "scripts"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "script_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "script_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scripts_list",
+      "handler": "list_scripts",
+      "tags": [
+        "scripts"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "directory": {
+            "default": "res://",
+            "type": "string"
+          },
+          "offset": {
+            "default": 0,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "limit": {
+            "default": 200,
+            "maximum": 1000,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "language": {
+            "default": "gd",
+            "enum": [
+              "gd",
+              "cs"
+            ],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scripts_get_for_node",
+      "handler": "get_script_for_node",
+      "tags": [
+        "scripts"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "node_path": {
+            "default": "",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scripts_write",
+      "handler": "write_script",
+      "tags": [
+        "scripts"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "script_path": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "script_path",
+          "content"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scripts_patch",
+      "handler": "patch_script",
+      "tags": [
+        "scripts"
+      ],
+      "meta": {
+        "safety_class": "mutating"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "script_path": {
+            "type": "string"
+          },
+          "find": {
+            "type": "string"
+          },
+          "replace": {
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "script_path",
+          "find",
+          "replace"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_scripts_get_parse_errors",
+      "handler": "get_parse_errors",
+      "tags": [
+        "scripts"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "script_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "script_path"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_debug_workflow",
+      "handler": "debug_workflow",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "scene": {
+            "default": "",
+            "type": "string"
+          },
+          "timeout_seconds": {
+            "default": 5.0,
+            "maximum": 3600.0,
+            "minimum": 0.1,
+            "type": "number"
+          },
+          "expected_timeout": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_project_scaffold",
+      "handler": "scaffold_project",
+      "tags": [
+        "project_scaffold"
+      ],
+      "meta": {
+        "safety_class": "destructive"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "project_name": {
+            "default": "",
+            "type": "string"
+          },
+          "main_scene": {
+            "default": "",
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dry_run": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_list_tools_by_safety_class",
+      "handler": "list_tools_by_safety_class",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_list_toolsets",
+      "handler": "list_toolsets",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_enable_toolset",
+      "handler": "enable_toolset",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "category"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_disable_toolset",
+      "handler": "disable_toolset",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "category"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_check_for_updates",
+      "handler": "check_for_updates",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "godot_get_server_info",
+      "handler": "get_server_info",
+      "tags": [
+        "core"
+      ],
+      "meta": {
+        "safety_class": "read_only"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    }
+  ]
+}

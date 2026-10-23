@@ -1,0 +1,326 @@
+{
+  "scope": "reviewed source files; excludes this generated manifest and verification.json",
+  "manifestSha256": "37eb3d9edd94c18b8d33c561be18f30bc1a8e83f6a337034d2337b4415d6497c",
+  "files": [
+    {
+      "path": ".github/workflows/source-checks.yml",
+      "size": 3002,
+      "sha256": "bc6f80ad4713c47121c2b8648e917cbb3b6ed937e3792186874b4fad90caf1fd"
+    },
+    {
+      "path": ".gitignore",
+      "size": 725,
+      "sha256": "3729a831c63e721c3af62237395723d378026b7f01bbd45fb7118eecb80cd4bf"
+    },
+    {
+      "path": "LICENSE",
+      "size": 1081,
+      "sha256": "2cc4eeeeb582a1e474611a88e338a3c7c3b4f97bb7e97bc40d6e91b8f076153a"
+    },
+    {
+      "path": "README.md",
+      "size": 3069,
+      "sha256": "208ae5c5be9e8b2ef5a7e93b4222f31f8c823bf81443eca33b8a36218d542a74"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "size": 7015,
+      "sha256": "9b223ec9bfe067e1161f4a02e8d0af4cac5a171bd36678bf458c08840b593aa6"
+    },
+    {
+      "path": "acceptance/acceptance-results.template.json",
+      "size": 43639,
+      "sha256": "289f7614e7668e9fe37dd319a4cd4e8fafd2b66c6023b4846a71ea4dd372b852"
+    },
+    {
+      "path": "acceptance/cases.json",
+      "size": 20790,
+      "sha256": "9f8dd7e391c5437e965ccfb73548ce3b5a3ead508254cc70c04fa0cea43f5359"
+    },
+    {
+      "path": "bridge/README.md",
+      "size": 3898,
+      "sha256": "cffaf3ef814cba9676d71f9da47e7f6109bdedabf2e1aca3664d20c457c6e2d0"
+    },
+    {
+      "path": "bridge/guarded_main.py",
+      "size": 8352,
+      "sha256": "7505461d891164a42048c675a7cca5db2274140c51037f4cf5683e63ce6267e8"
+    },
+    {
+      "path": "catalog/pinned-bridge-tools.json",
+      "size": 130013,
+      "sha256": "eac22adc0e21d008c7b28dc559cd3afd3281d74e88a2799920775116eb71f48c"
+    },
+    {
+      "path": "catalog/tools.json",
+      "size": 10420,
+      "sha256": "f738078092b58e36553b12d2f908f93c5ad18c7f8136e9aec0db40a5a2f87d17"
+    },
+    {
+      "path": "contracts/product.json",
+      "size": 2196,
+      "sha256": "5a0db2910d3a7545e2099eeb3b8ebf9ffedb0050347b3dcd2a7cf0bde818e46b"
+    },
+    {
+      "path": "contracts/settings.example.json",
+      "size": 360,
+      "sha256": "12b47bac4add158f43b20d93320d5b9a281bba2e43946d54b07251f03d60911f"
+    },
+    {
+      "path": "contracts/settings.schema.json",
+      "size": 4656,
+      "sha256": "32e101c09a07f30590567857a50a3eef575227e75240787438f3b4c76d5efbb5"
+    },
+    {
+      "path": "cordis.patch.yml",
+      "size": 78,
+      "sha256": "03c49edcb42e89de417bdbaa5595fcedb40d8b8ff41ff14996f8cb7500f04634"
+    },
+    {
+      "path": "docs/INSTALL.md",
+      "size": 9352,
+      "sha256": "60d151d36694e406bac21380942f1db14ba98b9186b80601d4700e7b139f1397"
+    },
+    {
+      "path": "docs/LIFECYCLE.md",
+      "size": 4313,
+      "sha256": "dcf2063e43ca541ba4528f542bb6cd79b6af42589a987b0401a9d443aa0d0ec6"
+    },
+    {
+      "path": "docs/PUBLICATION.md",
+      "size": 2318,
+      "sha256": "c27c41428cc87ba6c18a92a669b3c00ceb10fcc1fa23a94f9c63147c24545ca1"
+    },
+    {
+      "path": "docs/SETUP.md",
+      "size": 12092,
+      "sha256": "435bee6f8739481d4cd14d3ca9637f29153a13dc257399472c0a9a09783bd4d6"
+    },
+    {
+      "path": "docs/TRACEABILITY.md",
+      "size": 9845,
+      "sha256": "c0eb1f555b81e1e3d3fff75f0a7145249d820373652a434046c28591c5bb0ae6"
+    },
+    {
+      "path": "docs/UNINSTALL.md",
+      "size": 3961,
+      "sha256": "e296fd0ab02afd77a4d4262b970afb9a1fdf7f8bb3451e65fe44d3ed95b78233"
+    },
+    {
+      "path": "docs/VERIFICATION.md",
+      "size": 4646,
+      "sha256": "efcdc8e3385c0205c752b7904cf80a6f1b9d4d8d43e923738fa1288785b22fb5"
+    },
+    {
+      "path": "icon.svg",
+      "size": 285,
+      "sha256": "cfb2ba74d9968f1cf816cfcb68b07e5f40f12c06c23a431bcc9d7942a1dec05b"
+    },
+    {
+      "path": "locale/en.json",
+      "size": 6443,
+      "sha256": "6a2d6059151d729ddbec166c5c125223e470940bebd447165f49d3b539f1a301"
+    },
+    {
+      "path": "locale/zh.json",
+      "size": 5822,
+      "sha256": "1af98ebeff7faa55d195723a37a0b04f8e089042feb9d9ccfe39532ad85f97b6"
+    },
+    {
+      "path": "locks/bridge-requirements.lock",
+      "size": 79104,
+      "sha256": "46d050724223eb54e62281167854f471697ffd162a2a42b08b6c14b59d993c8a"
+    },
+    {
+      "path": "locks/build-package-lock.json",
+      "size": 14950,
+      "sha256": "a89ec4bf755527e98ffa003c8f7b7b937f09ce5a4643f6bcda26d3d9f05b05ed"
+    },
+    {
+      "path": "locks/setup-test-requirements.lock",
+      "size": 6497,
+      "sha256": "57d061db800b172cb226a09dbd911065f368d2a1d9d067396f37f845175de1d3"
+    },
+    {
+      "path": "package.json",
+      "size": 2468,
+      "sha256": "6880d761b49a5590d0abbbb7957437714570cf28ff2f7b417fa3be0cc7d04080"
+    },
+    {
+      "path": "prompts/godot-2d.md",
+      "size": 2071,
+      "sha256": "e482453907866262bf7638c9bbe4fe5821216bedd2204c147a3cba5f0bdb26bd"
+    },
+    {
+      "path": "resolved-dependencies.json",
+      "size": 185510,
+      "sha256": "6197d38feef552ac69246246bee8791f8e6851a2688af249d07064ae8489f756"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "size": 1480,
+      "sha256": "06abb7deba849a23083b7e207407b69b52bf74d4e6e15b19eafe9d89b0be210e"
+    },
+    {
+      "path": "scripts/lock_dependencies.py",
+      "size": 14494,
+      "sha256": "dab89fd3944db5de2d4ce8b1bbb86a0b899d90651d7d26e51df12f7e78efdb6e"
+    },
+    {
+      "path": "scripts/scan_publication.py",
+      "size": 11250,
+      "sha256": "785fe81cfdb6b4ca9542f6b0a97acc94e259fe0b1ad99311e72c51902fe8766d"
+    },
+    {
+      "path": "scripts/setup/extract_addon.py",
+      "size": 1697,
+      "sha256": "65c46b9e9b40b61cd4e5001d1119a51cbe37be9a619c7459f179c9b78b4ec28d"
+    },
+    {
+      "path": "scripts/setup/probe_editor.gd",
+      "size": 1466,
+      "sha256": "d46be27522b1c287aff894d1f9c37050e2ae95cde92a6bf4212b693ae2da2e5a"
+    },
+    {
+      "path": "scripts/setup/probe_runtime.gd",
+      "size": 476,
+      "sha256": "364c368bdecb712642cb7553d9c2586c72c25d4d58080d45de174968494ac035"
+    },
+    {
+      "path": "scripts/setup/remove_override.py",
+      "size": 7213,
+      "sha256": "bdc2ffe9faf7c4c5c056fae8f529ef9d36609f72d3b337cc7949cb6288880dc8"
+    },
+    {
+      "path": "scripts/setup.mjs",
+      "size": 50393,
+      "sha256": "2ed32e01e0787f635e17763cdad3a8b1df7a65ae1619017f5ba09f2dd452bafe"
+    },
+    {
+      "path": "skills/godot-2d-workflow/SKILL.md",
+      "size": 2074,
+      "sha256": "6e65dd9d61c9e66e29e97fb6662ba19452077944ac9a1f7248d9e08badcbbc93"
+    },
+    {
+      "path": "skills/godot-2d-workflow/references/assets.md",
+      "size": 1709,
+      "sha256": "57e5acebce3ca06ab7607d53f4cbb720dce6bf81875e2a2a23f72628d034112e"
+    },
+    {
+      "path": "skills/godot-2d-workflow/references/debugging.md",
+      "size": 1736,
+      "sha256": "e9c858a752a59fe53bb16a18c5659cb055f3438ce86d9a1ef450a179d5de42f6"
+    },
+    {
+      "path": "skills/godot-2d-workflow/references/release.md",
+      "size": 1366,
+      "sha256": "67c3a3df8854c169328746e3b06a360d1fe5f71d691a92b5bd464a7cedb7a3aa"
+    },
+    {
+      "path": "skills/godot-2d-workflow/references/testing.md",
+      "size": 2024,
+      "sha256": "c145a3b45c558785464ec0bc36d93108d9ea8965aa78a2d58a5f8fe8838e84b4"
+    },
+    {
+      "path": "src/client.tsx",
+      "size": 21111,
+      "sha256": "1eee654e877e364285bcbd389f52eb496bfce03ee1a5449635e3f3ee55223e67"
+    },
+    {
+      "path": "src/config.ts",
+      "size": 12502,
+      "sha256": "15f2f719ab4ca4fcc6fe2571e80d1ec8f7cd76f51906257eda0d9b591a2bfeee"
+    },
+    {
+      "path": "src/index.ts",
+      "size": 7073,
+      "sha256": "16df5601172cc74676b5f2ad9231b222b30f48774b2239f529bf44d9c9f3ee18"
+    },
+    {
+      "path": "src/lifecycle.ts",
+      "size": 6204,
+      "sha256": "35c584d1debc0cadc891576fbf4e17463973049e80eb75b83b8048eda81b4a9c"
+    },
+    {
+      "path": "src/session.ts",
+      "size": 12962,
+      "sha256": "29f533a8e8502408ce1dd35860c11b4ac86643618d6a9f00637871c00b4f368e"
+    },
+    {
+      "path": "tests/bridge/outcome-fixture.json",
+      "size": 337,
+      "sha256": "1efb306ab4e313c83cfe10f7c387b292a9a6f717681d89e947ebb233966c4b3a"
+    },
+    {
+      "path": "tests/bridge/test_failure_outcome.py",
+      "size": 7209,
+      "sha256": "7f80ecbaf4cbdfd9d016cf86997d2b344ba6da40afe8ee7c33e05848b2f22125"
+    },
+    {
+      "path": "tests/bridge/test_guarded_main.py",
+      "size": 11483,
+      "sha256": "f1c92f4796555c0aa8de84f5a2396b2ec74ca5d8e6a4d3fdf7951dcee78f0782"
+    },
+    {
+      "path": "tests/bridge/test_loopback_bridge.py",
+      "size": 5040,
+      "sha256": "8455508153c010d6bb05364da7b6efdcbfd1f4932a902a2b1a49736448aac663"
+    },
+    {
+      "path": "tests/bridge/test_native_bridge.py",
+      "size": 4314,
+      "sha256": "a105e0719d4465c040d8f101c13341f6e110c82588c3012a792eb413d5be82d5"
+    },
+    {
+      "path": "tests/bridge/version_probe/project.godot",
+      "size": 129,
+      "sha256": "52bf3d3688502f47be3007cc91cabaeede3fbec3f84f8d0ae6cd7f9918de197a"
+    },
+    {
+      "path": "tests/bridge/version_probe/version_probe.gd",
+      "size": 123,
+      "sha256": "b8943a907830bb2be19752fcef27bc67267a59d33e99e930073d6ee851009317"
+    },
+    {
+      "path": "tests/config.test.mjs",
+      "size": 13171,
+      "sha256": "bcaba3bea2796613781cda90fe1f6c198a13749b29e96983b7e8e75d01d553fc"
+    },
+    {
+      "path": "tests/contracts/README.md",
+      "size": 1623,
+      "sha256": "9638306de3be457d32d3cb7352ea61a8e7a45b3741308792d51a9eba9842c10e"
+    },
+    {
+      "path": "tests/contracts/check_contracts.py",
+      "size": 21919,
+      "sha256": "183a3e440a9f7582f317b2c62637d2d0829f0a39b7dccc1681096e3f4e704571"
+    },
+    {
+      "path": "tests/input-policy.test.mjs",
+      "size": 6197,
+      "sha256": "ac27515a17bf1a16ec5919757353aa2abef035373f45b41e2578bd59b8e31ee7"
+    },
+    {
+      "path": "tests/lifecycle.test.mjs",
+      "size": 13243,
+      "sha256": "5fde98fe8313da958b981eced47a4f08fc9738f7e9ea6f9e6a48205f2cca707c"
+    },
+    {
+      "path": "tests/publication/test_scan_publication.py",
+      "size": 4867,
+      "sha256": "d373b59b1be63439d64c91359058d3df4680721839d04f9481fb5ca014a5bb3b"
+    },
+    {
+      "path": "tests/setup.test.mjs",
+      "size": 34192,
+      "sha256": "7d4fbcb7a8665b417baf3538f6e2b3b31ff7c6207cd0f9a942f956663aa35103"
+    },
+    {
+      "path": "tests/ui-state.test.mjs",
+      "size": 13147,
+      "sha256": "6f1233045202e81cd1a1835ad92d84b517773f3167efdd68977dbb574a4bedde"
+    }
+  ]
+}

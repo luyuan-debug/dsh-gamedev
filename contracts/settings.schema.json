@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Proposed dsh-gamedev settings contract (not native DSH import format)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "enabled",
+    "projectRoot",
+    "godotExecutable",
+    "bridge",
+    "allowedOptionalTools",
+    "testFrameworkPreference"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "projectRoot": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Explicit real project root; runtime must validate realpath and authorization."
+    },
+    "godotExecutable": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bridge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "mode",
+        "executable",
+        "endpoint",
+        "bridgeUrl",
+        "bridgeSecretRef",
+        "httpSecretRef"
+      ],
+      "properties": {
+        "id": {
+          "const": "godot-editor-mcp"
+        },
+        "mode": {
+          "enum": [
+            "stdio",
+            "existing-loopback-http"
+          ]
+        },
+        "executable": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Already installed pinned program; not an installer command."
+        },
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Validate loopback/no redirects to remote; never contain inline secrets."
+        },
+        "bridgeUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Explicit loopback WebSocket bridge URL shared with the addon; validate against actual upstream contract."
+        },
+        "bridgeSecretRef": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Host-supported reference for editor-bridge authentication, not the token value."
+        },
+        "httpSecretRef": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Host-supported reference for an existing HTTP MCP service, separate from bridge authentication."
+        }
+      }
+    },
+    "allowedOptionalTools": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "gdtoolkit",
+          "imagemagick",
+          "ffmpeg",
+          "pixelorama",
+          "gua",
+          "dcc-mcp",
+          "tiled",
+          "ldtk"
+        ]
+      },
+      "default": []
+    },
+    "testFrameworkPreference": {
+      "enum": [
+        "existing",
+        "none",
+        "gut",
+        "gdunit4"
+      ],
+      "default": "existing"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "enabled": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "projectRoot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "godotExecutable": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "bridge": {
+                  "properties": {
+                    "mode": {
+                      "const": "stdio"
+                    }
+                  }
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "bridge": {
+                  "properties": {
+                    "executable": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "bridgeUrl": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "bridge": {
+                  "properties": {
+                    "mode": {
+                      "const": "existing-loopback-http"
+                    }
+                  }
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "bridge": {
+                  "properties": {
+                    "endpoint": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

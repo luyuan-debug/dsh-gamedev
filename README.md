@@ -1,2 +1,29 @@
-# dsh-gamedev
-One native Godot 2D preset for DSH: design, implementation, debugging and verification, with isolated setup and guarded editor binding.
+# dsh-gamedev 0.2.0
+
+一个 **Godot 2D 通用预设**，让同一 DSH Agent 完成必要设计、代码与场景修改、调试、运行和核验。沿用 DSH 原生工程工具、MCP、设置与审批；提供一个预设、一个工作流 Skill 和一个设置页。
+
+0.2.0 重点改进连接生命周期与隔离安装。连接归属于确切的会话对象和当前预设定义；关闭设置立即撤销后续调用，再等待原生连接清理。切换项目后必须新建会话；插件热重载后，旧定义会话保持失效，新会话等待旧连接释放才能接管。原生客户端可有限次恢复传输连接，失败的写操作不会自动重放。详见 [生命周期与故障恢复](docs/LIFECYCLE.md)。
+
+安装辅助程序把原生 DSH Profile、Godot 副本、固定桥接 venv 和新建游戏放进全新工作目录。先只读检查已有程序，校验锁定依赖与实际安装字节，再启动本次工作区。账户与模型由原生 DSH 配置，辅助程序不复制账户、不自动发送模型请求。
+
+## 开始使用
+
+实际支持范围和发行状态以 [验收报告](docs/VERIFICATION.md) 为准。目标组合为 **macOS arm64、DSH 0.2.1-rc.2、Godot 4.7.2 stable、已有 CPython 3.14、Node ≥24.14**；其他系统或版本不由这组结果推定。 Mono 版 Godot 还需显式指定已有 `--dotnet`；安装准备与每次启动前均实际运行隔离的 headless 游戏探针，不能只凭 `--version` 或编辑器窗口判断可用。
+
+1. 取得本版 `.tgz` 和独立 SHA-256 清单。
+2. 按 [隔离安装与启动](docs/SETUP.md) 执行 `doctor → prepare → doctor → launch`。
+3. 在 DSH 新建工作目录为 `project/` 的普通会话，选择 **Godot 2D**。先运行上游健康检查，核对项目与编辑器身份，再开始开发。
+4. 每次结束先停止游戏，再退出启动终端。次日对同一工作区运行 `doctor`、`launch`。
+
+默认只启用本机 stdio 桥接，一次只允许一个拥有者会话和一条编辑器写入通道。上游服务端与 addon 精确固定为 `2026.10.20.1`；最小启动保护器校验项目身份并拒绝第二编辑器替换。HTTP 模式在当前宿主中保持不可启用。
+
+gdtoolkit、ImageMagick、FFmpeg 等为显式允许的可选已有工具，缺失不阻断无关核心工作。插件运行时不下载或升级依赖。原生审批保留；取消或写入超时后先回读，取消不表示事务回滚。文件可见范围与桥接保护也不构成任意 Shell 或编辑器脚本的通用沙箱。
+
+- [安装、配置与锁定构建](docs/INSTALL.md)
+- [关闭、卸载与回退](docs/UNINSTALL.md)
+- [生命周期与故障恢复](docs/LIFECYCLE.md)
+- [验收方法、实际结果与限制](docs/VERIFICATION.md)
+- [需求追踪](docs/TRACEABILITY.md)
+- [第三方来源与许可](THIRD_PARTY_NOTICES.md)
+
+本项目原创源码按 [MIT](LICENSE) 开源。Godot、DSH、桥接及其他独立依赖保留各自许可。源码仓库不包含账户、会话记录、用户工程、引擎二进制或私有验收日志。
